@@ -1,0 +1,1020 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Compras Hoerbiger</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --page:#f9f9f7;
+  --surface:#fcfcfb;
+  --surface-2:#f2f1ec;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#898781;
+  --grid:#e1e0d9;
+  --baseline:#c3c2b7;
+  --border:rgba(11,11,11,0.10);
+  --border-strong:rgba(11,11,11,0.16);
+  --accent:#2a78d6;      /* Nacional / Compra / primary */
+  --accent-ink:#ffffff;
+  --accent-soft:#e8f0fb;
+  --accent-2:#eb6834;    /* Importado */
+  --accent-2-soft:#fdece3;
+  --accent-3:#1baf7a;    /* Serviço */
+  --accent-4:#eda100;    /* Beneficiamento */
+  --good:#0ca30c;
+  --warning:#c98100;
+  --critical:#d03b3b;
+  --brand-1:#001f47;   /* header band gradient start (Hoerbiger navy, deepened) */
+  --brand-2:#003882;   /* header band gradient end (Hoerbiger blue) */
+  --brand-accent:#87212e; /* Hoerbiger red, brand accent only */
+  --shadow: 0 1px 2px rgba(11,11,11,0.04), 0 6px 20px -12px rgba(11,11,11,0.18);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --page:#0d0d0d;
+    --surface:#1a1a19;
+    --surface-2:#222220;
+    --ink:#ffffff;
+    --ink-2:#c3c2b7;
+    --muted:#8f8d86;
+    --grid:#2c2c2a;
+    --baseline:#3a3a37;
+    --border:rgba(255,255,255,0.10);
+    --border-strong:rgba(255,255,255,0.18);
+    --accent:#3987e5;
+    --accent-ink:#ffffff;
+    --accent-soft:#132539;
+    --accent-2:#d95926;
+    --accent-2-soft:#3a2013;
+    --accent-3:#199e70;
+    --accent-4:#c98500;
+    --good:#26c440;
+    --warning:#fab219;
+    --critical:#e66767;
+    --brand-1:#001433;
+    --brand-2:#003882;
+    --brand-accent:#a3384a;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 30px -14px rgba(0,0,0,0.6);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --page:#0d0d0d;
+  --surface:#1a1a19;
+  --surface-2:#222220;
+  --ink:#ffffff;
+  --ink-2:#c3c2b7;
+  --muted:#8f8d86;
+  --grid:#2c2c2a;
+  --baseline:#3a3a37;
+  --border:rgba(255,255,255,0.10);
+  --border-strong:rgba(255,255,255,0.18);
+  --accent:#3987e5;
+  --accent-ink:#ffffff;
+  --accent-soft:#132539;
+  --accent-2:#d95926;
+  --accent-2-soft:#3a2013;
+  --accent-3:#199e70;
+  --accent-4:#c98500;
+  --good:#26c440;
+  --warning:#fab219;
+  --critical:#e66767;
+  --brand-1:#001433;
+  --brand-2:#003882;
+  --brand-accent:#a3384a;
+  --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 30px -14px rgba(0,0,0,0.6);
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--page);
+  color:var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.pill,.seg-btn,.brand-mark,.nav-label{ font-family:'Sora', system-ui, -apple-system, sans-serif; }
+
+.page{ max-width:1180px; margin:0 auto; padding: 20px 20px 48px; }
+
+/* ---------- header ---------- */
+.header-band{
+  background:
+    radial-gradient(120% 180% at 100% 0%, rgba(255,255,255,0.16), transparent 55%),
+    linear-gradient(135deg, var(--brand-1) 0%, var(--brand-2) 100%);
+  border-radius:18px;
+  padding:20px 24px;
+  margin-bottom:18px;
+  box-shadow:var(--shadow);
+  border-bottom:3px solid var(--brand-accent);
+}
+.topbar{
+  display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+  flex-wrap:wrap;
+}
+.brand{ display:flex; align-items:center; gap:14px; }
+.brand-mark{
+  height:50px; width:auto; border-radius:10px; flex:none;
+  background:#ffffff; color:var(--brand-1);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:0.78rem; letter-spacing:0.01em;
+  box-shadow:0 2px 10px rgba(0,0,0,0.18);
+  overflow:hidden;
+  padding:6px 10px;
+}
+.brand-mark img{ height:100%; width:auto; display:block; object-fit:contain; }
+h1{ margin:0; font-size:1.34rem; font-weight:700; letter-spacing:-0.01em; color:#ffffff; }
+.subtitle{ margin:3px 0 0; font-size:0.82rem; color:rgba(255,255,255,0.82); }
+.meta{ display:flex; align-items:center; gap:12px; }
+.generated{ font-size:0.75rem; color:rgba(255,255,255,0.78); white-space:nowrap; }
+.theme-toggle{
+  width:34px; height:34px; border-radius:9px; border:1px solid rgba(255,255,255,0.35);
+  background:rgba(255,255,255,0.14); color:#ffffff; cursor:pointer; display:flex;
+  align-items:center; justify-content:center; flex:none;
+}
+.theme-toggle:hover{ background:rgba(255,255,255,0.24); }
+.theme-toggle svg{ width:16px; height:16px; }
+.theme-toggle .i-moon{ display:none; }
+:root[data-theme="dark"] .theme-toggle .i-sun{ display:none; }
+:root[data-theme="dark"] .theme-toggle .i-moon{ display:block; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{ display:none; }
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{ display:block; }
+}
+
+/* ---------- filter bar ---------- */
+.filterbar{
+  position:sticky; top:0; z-index:20;
+  background:var(--page);
+  padding:10px 0 14px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:20px;
+}
+.filter-row{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+.months{
+  display:flex; gap:6px; overflow-x:auto; padding:2px 2px 6px;
+  scrollbar-width:thin;
+}
+.pill{
+  flex:none; border:1px solid var(--border-strong); background:var(--surface);
+  color:var(--ink-2); font-size:0.78rem; font-weight:600; padding:7px 13px;
+  border-radius:999px; cursor:pointer; white-space:nowrap; transition:background .12s,color .12s,border-color .12s;
+}
+.pill:hover{ background:var(--surface-2); }
+.pill.active{ background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+.segmented{
+  display:flex; border:1px solid var(--border-strong); border-radius:10px; padding:3px;
+  background:var(--surface); flex:none; gap:2px;
+}
+.seg-btn{
+  border:none; background:transparent; color:var(--ink-2); font-size:0.78rem; font-weight:600;
+  padding:7px 14px; border-radius:7px; cursor:pointer;
+}
+.seg-btn:hover{ color:var(--ink); }
+.seg-btn.active{ background:var(--accent); color:var(--accent-ink); }
+
+/* ---------- layout ---------- */
+main{ display:flex; flex-direction:column; gap:18px; }
+.kpi-row{ display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:14px; align-items:stretch; }
+.grid-2{ display:grid; grid-template-columns:1.05fr 1fr; gap:16px; align-items:stretch; }
+@media (max-width:760px){
+  .kpi-row{ grid-template-columns:repeat(2,1fr); }
+  .kpi-row .stat.hero{ grid-column:span 2; }
+  .kpi-row .stat:nth-child(4){ grid-column:span 2; }
+  .grid-2{ grid-template-columns:1fr; }
+}
+
+/* ---------- insight chips ---------- */
+.insights{ display:flex; flex-wrap:wrap; gap:8px; margin-top:-4px; }
+.chip{
+  display:inline-flex; align-items:center; gap:7px; padding:7px 13px;
+  border-radius:999px; font-size:0.76rem; font-weight:600; color:var(--ink-2);
+  background:var(--surface); border:1px solid var(--border-strong);
+}
+.chip-dot{ width:7px; height:7px; border-radius:50%; flex:none; }
+
+.card{
+  background:var(--surface); border:1px solid var(--border); border-radius:14px;
+  padding:18px 18px 20px; box-shadow:var(--shadow);
+  display:flex; flex-direction:column;
+}
+.card-head{ display:flex; flex-direction:column; }
+.card-head .card-title{ display:flex; align-items:center; gap:9px; }
+.card-head h2{ margin:0; font-size:0.98rem; font-weight:700; }
+.card-sub{ margin:3px 0 14px; font-size:0.76rem; color:var(--muted); }
+.card-icon{
+  width:26px; height:26px; border-radius:8px; flex:none;
+  background:var(--accent-soft); color:var(--accent);
+  display:flex; align-items:center; justify-content:center;
+}
+.card-icon svg{ width:14px; height:14px; }
+.card.accent-critical{ border-left:3px solid var(--critical); }
+.card.accent-warning{ border-left:3px solid var(--warning); }
+.card.accent-good{ border-left:3px solid var(--good); }
+
+/* ---------- stat tiles ---------- */
+.stat{
+  position:relative; background:var(--surface); border:1px solid var(--border); border-radius:16px;
+  padding:16px 17px 15px; box-shadow:var(--shadow); overflow:hidden;
+  display:flex; flex-direction:column; gap:7px; min-width:0;
+}
+.stat-icon{
+  width:30px; height:30px; border-radius:9px; flex:none;
+  background:var(--accent-soft); color:var(--accent);
+  display:flex; align-items:center; justify-content:center; margin-bottom:2px;
+}
+.stat-icon svg{ width:16px; height:16px; }
+.stat-icon.i-good{ background:color-mix(in srgb, var(--good) 16%, transparent); color:var(--good); }
+.stat-icon.i-warning{ background:color-mix(in srgb, var(--warning) 18%, transparent); color:var(--warning); }
+.stat-icon.i-critical{ background:color-mix(in srgb, var(--critical) 16%, transparent); color:var(--critical); }
+.stat-icon.i-accent2{ background:var(--accent-2-soft); color:var(--accent-2); }
+.stat-label{ font-size:0.74rem; color:var(--ink-2); font-weight:600; text-transform:uppercase; letter-spacing:0.04em; }
+.stat-value-row{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+.stat-value{ font-size:1.68rem; font-weight:700; letter-spacing:-0.01em; line-height:1.1; }
+.stat-delta{ font-size:0.74rem; font-weight:700; padding:2px 7px; border-radius:999px; white-space:nowrap; }
+.stat-delta.up{ color:var(--good); background:color-mix(in srgb, var(--good) 14%, transparent); }
+.stat-delta.down{ color:var(--critical); background:color-mix(in srgb, var(--critical) 14%, transparent); }
+.stat-foot{ font-size:0.74rem; color:var(--muted); }
+.stat-spark{ margin-top:2px; height:30px; }
+.stat-spark svg{ display:block; width:100%; height:100%; overflow:visible; }
+
+.stat.hero{
+  grid-column:span 2;
+  background:
+    radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%),
+    var(--surface);
+  border-color:var(--border-strong);
+  padding:20px 22px 18px;
+}
+.stat.hero .stat-value{ font-size:2.15rem; }
+.stat.hero .stat-icon{ width:34px; height:34px; border-radius:10px; }
+.stat.hero .stat-icon svg{ width:18px; height:18px; }
+
+/* ---------- split (Nacional x Importado mini) ---------- */
+.split-bar{ display:flex; height:10px; border-radius:999px; overflow:hidden; background:var(--surface-2); margin-top:2px; }
+.split-seg{ height:100%; }
+.split-legend{ display:flex; flex-direction:column; gap:3px; margin-top:2px; }
+.split-legend span{ display:flex; align-items:center; gap:6px; font-size:0.74rem; color:var(--ink-2); font-weight:600; }
+.split-legend i{ width:8px; height:8px; border-radius:2px; flex:none; }
+
+/* ---------- status badge (entrega) ---------- */
+.status-badge{
+  display:inline-flex; align-items:center; gap:7px; padding:5px 12px; border-radius:999px;
+  font-size:0.86rem; font-weight:800; letter-spacing:0.01em; width:fit-content;
+}
+.status-badge.st-good{ color:var(--good); background:color-mix(in srgb, var(--good) 15%, transparent); }
+.status-badge.st-warning{ color:var(--warning); background:color-mix(in srgb, var(--warning) 18%, transparent); }
+.status-badge.st-critical{ color:var(--critical); background:color-mix(in srgb, var(--critical) 15%, transparent); }
+.status-badge .dot{ width:7px; height:7px; border-radius:50%; background:currentColor; flex:none; }
+
+/* ---------- donuts ---------- */
+.origem-body, .natureza-body{ display:flex; align-items:center; gap:20px; flex:1; }
+.donut-wrap{ position:relative; flex:none; width:150px; height:150px; }
+.donut-wrap svg{ width:100%; height:100%; }
+.donut-center{
+  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; pointer-events:none;
+}
+.donut-center .dc-val{ font-size:1.05rem; font-weight:700; }
+.donut-center .dc-label{ font-size:0.66rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em; margin-top:1px;}
+.origem-stats{ display:flex; flex-direction:column; gap:12px; flex:1; min-width:0; }
+.oi-item{ display:flex; align-items:flex-start; gap:9px; }
+.oi-dot{ width:10px; height:10px; border-radius:3px; margin-top:4px; flex:none; }
+.oi-label{ font-size:0.76rem; color:var(--ink-2); font-weight:600; }
+.oi-value{ font-size:1.02rem; font-weight:700; }
+.oi-sub{ font-size:0.74rem; color:var(--muted); }
+
+.legend-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; flex:1; min-width:0; }
+.legend-list li{ display:flex; align-items:center; gap:9px; font-size:0.8rem; }
+.legend-list .dot{ width:10px; height:10px; border-radius:3px; flex:none; }
+.legend-list .lg-name{ flex:1; color:var(--ink-2); font-weight:600; }
+.legend-list .lg-val{ font-weight:700; font-variant-numeric:tabular-nums; }
+.legend-list .lg-pct{ color:var(--muted); font-size:0.74rem; width:40px; text-align:right; font-variant-numeric:tabular-nums;}
+
+/* ---------- trend chart ---------- */
+.wide{ width:100%; }
+.trend-svg{ width:100%; height:210px; display:block; overflow:visible; }
+.bar-seg{ cursor:pointer; }
+.bar-label{ font-size:11px; font-weight:700; fill:var(--ink-2); font-family:system-ui,sans-serif; }
+.bar-axis-label{ font-size:10.5px; fill:var(--muted); font-family:system-ui,sans-serif; }
+
+/* ---------- horizontal bar lists ---------- */
+.hbar-list{ display:flex; flex-direction:column; gap:9px; }
+.hbar-row{ display:grid; grid-template-columns:112px 1fr 84px; align-items:center; gap:8px; }
+.hbar-rank{ font-size:0.72rem; color:var(--muted); font-weight:700; width:14px; flex:none; }
+.hbar-name{ font-size:0.78rem; color:var(--ink-2); font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; }
+.hbar-track{ position:relative; height:16px; background:var(--surface-2); border-radius:5px; overflow:hidden; }
+.hbar-fill{ position:absolute; left:0; top:0; bottom:0; border-radius:5px; background:var(--accent); min-width:3px; transition:width .25s ease; }
+.hbar-fill.alt{ background:var(--muted); opacity:0.55; }
+.hbar-val{ font-size:0.74rem; font-weight:700; text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.hbar-meta{ font-size:0.68rem; color:var(--muted); text-align:right; }
+.note{ font-size:0.72rem; color:var(--muted); margin:12px 0 0; line-height:1.45; }
+
+/* ---------- delivery ---------- */
+.delivery-body{ display:flex; flex-direction:column; gap:16px; }
+.delivery-top{ display:flex; gap:16px; }
+.mini-stat{ flex:1; }
+.mini-stat-plain{ display:flex; flex-direction:column; gap:6px; }
+.mini-stat .stat-value{ font-size:1.3rem; }
+.meter{ height:10px; border-radius:999px; background:var(--surface-2); overflow:hidden; }
+.meter-fill{ height:100%; border-radius:999px; }
+.meter-caption{ display:flex; justify-content:space-between; font-size:0.72rem; color:var(--muted); margin-top:6px; }
+.divider{ height:1px; background:var(--border); margin:2px 0; }
+
+/* ---------- tooltip ---------- */
+.tooltip{
+  position:fixed; z-index:100; pointer-events:none; background:var(--ink); color:var(--page);
+  font-size:0.74rem; padding:7px 10px; border-radius:8px; max-width:220px; line-height:1.45;
+  box-shadow:0 8px 24px rgba(0,0,0,0.25); transform:translate(-50%,-100%); margin-top:-10px;
+}
+:root[data-theme="dark"] .tooltip{ background:#f2f1ec; color:#0b0b0b; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tooltip{ background:#f2f1ec; color:#0b0b0b; } }
+.tooltip .tt-val{ font-weight:700; font-size:0.82rem; }
+.tooltip .tt-name{ opacity:0.75; }
+
+footer{ margin-top:26px; padding-top:14px; border-top:1px solid var(--border); }
+footer p{ margin:0; font-size:0.72rem; color:var(--muted); line-height:1.5; }
+
+@media (max-width:480px){
+  .hbar-row{ grid-template-columns:96px 1fr 78px; }
+  .origem-body{ flex-direction:column; align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+
+
+<div class="page">
+  <div class="header-band">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" id="brandMark"><img src="data:image/png;base64,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" alt="Hoerbiger"></span>
+        <div>
+          <h1>Compras Hoerbiger</h1>
+          <p class="subtitle">Painel de indicadores de pedidos de compra &middot; <span id="periodLabel"></span></p>
+        </div>
+      </div>
+      <div class="meta">
+        <span class="generated">Atualizado em <span id="generatedAt"></span></span>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
+        </button>
+      </div>
+    </header>
+  </div>
+
+  <div class="filterbar">
+    <div class="filter-row">
+      <div class="months" id="monthPills"></div>
+      <div class="segmented" id="origemSeg">
+        <button class="seg-btn active" data-val="Todos" type="button">Todos</button>
+        <button class="seg-btn" data-val="Nacional" type="button">Nacional</button>
+        <button class="seg-btn" data-val="Importado" type="button">Importado</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="kpi-row" id="kpiRow" aria-label="Indicadores principais"></section>
+    <div class="insights" id="insightsRow" aria-label="Resumo r&aacute;pido"></div>
+
+    <section class="grid-2">
+      <div class="card" id="cardOrigem">
+        <div class="card-head"><div class="card-title"><span class="card-icon" data-icon="swap"></span><h2>Nacional &times; Importado</h2></div><p class="card-sub">Valor total de pedidos gerados por origem</p></div>
+        <div class="origem-body">
+          <div class="donut-wrap">
+            <svg viewBox="0 0 150 150" id="origemDonut"></svg>
+            <div class="donut-center"><span class="dc-val" id="origemDonutVal">&nbsp;</span><span class="dc-label">Total</span></div>
+          </div>
+          <div class="origem-stats" id="origemStats"></div>
+        </div>
+      </div>
+
+      <div class="card" id="cardNatureza">
+        <div class="card-head"><div class="card-title"><span class="card-icon" data-icon="layers"></span><h2>Natureza da compra</h2></div><p class="card-sub">% Compras / Servi&ccedil;os e Beneficiamento</p></div>
+        <div class="natureza-body">
+          <div class="donut-wrap">
+            <svg viewBox="0 0 150 150" id="naturezaDonut"></svg>
+            <div class="donut-center"><span class="dc-val" id="naturezaDonutVal">&nbsp;</span><span class="dc-label">Total</span></div>
+          </div>
+          <ul class="legend-list" id="naturezaLegend"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="card" id="cardTrend">
+        <div class="card-head"><div class="card-title"><span class="card-icon" data-icon="trend"></span><h2>Evolu&ccedil;&atilde;o mensal &mdash; valor</h2></div><p class="card-sub">Valor total de pedidos gerados por m&ecirc;s &mdash; clique numa barra ou num m&ecirc;s acima para destacar</p></div>
+        <svg class="trend-svg" id="trendChart" viewBox="0 0 540 210" preserveAspectRatio="xMidYMid meet"></svg>
+        <p class="note" id="trendNote"></p>
+      </div>
+
+      <div class="card" id="cardTrendQtd">
+        <div class="card-head"><div class="card-title"><span class="card-icon" data-icon="rank"></span><h2>Evolu&ccedil;&atilde;o mensal &mdash; quantidade</h2></div><p class="card-sub">Quantidade de pedidos gerados por m&ecirc;s &mdash; clique numa barra ou num m&ecirc;s acima para destacar</p></div>
+        <svg class="trend-svg" id="trendChartQtd" viewBox="0 0 540 210" preserveAspectRatio="xMidYMid meet"></svg>
+        <p class="note" id="trendQtdNote"></p>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="card" id="cardFornecedores">
+        <div class="card-head"><div class="card-title"><span class="card-icon" data-icon="rank"></span><h2>Top 10 fornecedores</h2></div><p class="card-sub">Por valor de pedidos, no per&iacute;odo e origem filtrados</p></div>
+        <div class="hbar-list" id="fornecedoresChart"></div>
+        <p class="note" id="fornecedoresNote"></p>
+      </div>
+
+      <div class="card" id="cardEntrega">
+        <div class="card-head"><div class="card-title"><span class="card-icon" data-icon="clock"></span><h2>Desempenho de entrega</h2></div><p class="card-sub">Baseado no prazo de atraso por item (dias)</p></div>
+        <div class="delivery-body">
+          <div class="delivery-top">
+            <div class="mini-stat mini-stat-plain">
+              <span class="stat-label">Mediana de atraso</span>
+              <span class="stat-value" id="atrasoMediana">&nbsp;</span>
+              <span class="stat-foot" id="atrasoMedianaFoot"></span>
+            </div>
+            <div class="mini-stat">
+              <span class="stat-label">Itens no prazo</span>
+              <div class="stat-value-row"><span class="stat-value" id="pctNoPrazo">&nbsp;</span></div>
+              <div class="meter" style="margin-top:8px;"><div class="meter-fill" id="meterNoPrazo"></div></div>
+              <div class="meter-caption"><span>0%</span><span>100%</span></div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div>
+            <p class="card-sub" style="margin-bottom:10px;">Pedidos por comprador</p>
+            <div class="hbar-list" id="compradoresChart"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p id="footerNote"></p>
+  </footer>
+</div>
+
+<div class="tooltip" id="tooltip" hidden></div>
+
+<script>
+const DATA = {"months":["2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07","2026-08"],"monthLabels":{"2026-01":"Jan/26","2026-02":"Fev/26","2026-03":"Mar/26","2026-04":"Abr/26","2026-05":"Mai/26","2026-06":"Jun/26","2026-07":"Jul/26","2026-08":"Ago/26"},"generatedAt":"22/09/2026 01:49","combos":{"Todos":{"Todos":{"valorTotal":87930204.07,"qtdPedidos":4350,"valorNacional":81325605.13,"valorImportado":6604598.94,"qtdNacional":3326,"qtdImportado":1024,"natureza":{"Compra":{"valor":15783455.53,"qtd":3520},"Serviço":{"valor":72146381.54,"qtd":829},"Beneficiamento":{"valor":367.0,"qtd":1}},"fornecedores":{"4AG":{"valor":400925.35,"qtd":39},"OTIMA ESTRA":{"valor":125114.02,"qtd":8},"FLASH":{"valor":800.0,"qtd":1},"PLASTERMO":{"valor":283344.55,"qtd":103},"TIMOTEC":{"valor":2225309.31,"qtd":500},"VALFLUOR":{"valor":56690.63,"qtd":58},"BRIZANTE":{"valor":112942.72,"qtd":207},"1DG":{"valor":1119222.9,"qtd":113},"TOTVS IBIRAP":{"valor":290903.24,"qtd":28},"LAVAPANO LTD":{"valor":13426.8,"qtd":1},"CREA":{"valor":5129.95,"qtd":1},"MG3":{"valor":34759.83,"qtd":15},"GS CORRENTES":{"valor":9586.0,"qtd":9},"VEIRANO ADV":{"valor":210187.81,"qtd":20},"NORD-LOCK":{"valor":45583.49,"qtd":3},"LACNAM":{"valor":332895.2,"qtd":15},"PRINER":{"valor":3370.0,"qtd":5},"POLGAS DISTR":{"valor":2125.45,"qtd":3},"4AS":{"valor":1667677.83,"qtd":395},"ALPHA METALI":{"valor":48475.0,"qtd":7},"MESTRA VEDAB":{"valor":21246.32,"qtd":89},"TELEFONICA":{"valor":57160.68,"qtd":22},"LOCALIZA MG2":{"valor":1920099.67,"qtd":59},"DELL COMP":{"valor":105758.42,"qtd":5},"DELL PR":{"valor":21294.34,"qtd":5},"RECONTECH":{"valor":99978.25,"qtd":3},"PROCUREMENT":{"valor":856.0,"qtd":2},"JUNDIANEL":{"valor":2768.43,"qtd":48},"GLOBAL JUN.1":{"valor":213330.72,"qtd":151},"4AC":{"valor":2693953.09,"qtd":469},"HIDROVARZEA":{"valor":24790.0,"qtd":3},"FSA QUALITY":{"valor":4260.0,"qtd":1},"EINSTEIN V":{"valor":5223.74,"qtd":1},"JUMAR":{"valor":18000.0,"qtd":1},"VIALIX":{"valor":28021.96,"qtd":9},"NEXT":{"valor":10740.0,"qtd":1},"ED SILVA E N":{"valor":17653.3,"qtd":3},"PB IMBETIBA":{"valor":105000.0,"qtd":2},"RONALDO CORR":{"valor":148140.37,"qtd":90},"J S ENGENHAR":{"valor":500.0,"qtd":2},"TERA":{"valor":24330.24,"qtd":2},"PRO SOLUTION":{"valor":315766.41,"qtd":5},"BDO RCS 2":{"valor":190556.0,"qtd":5},"PLAM MARCENA":{"valor":17102.05,"qtd":8},"PAMAG":{"valor":9615.4,"qtd":8},"JOTEC SOLUÇ":{"valor":39067.0,"qtd":16},"COPPI":{"valor":20343.34,"qtd":13},"Correio":{"valor":3600.0,"qtd":1},"GLEZIO ROCHA":{"valor":165388.6,"qtd":7},"GRUPO MCV":{"valor":6000.0,"qtd":2},"GOTO":{"valor":4800.0,"qtd":2},"KPMG":{"valor":190068.52,"qtd":2},"LACLAW":{"valor":5400.0,"qtd":1},"LELLO":{"valor":126000.0,"qtd":2},"LEVYCAM":{"valor":22000.0,"qtd":2},"METRA":{"valor":312582.04,"qtd":4},"ONFLY":{"valor":6480.0,"qtd":2},"OPTFIBER":{"valor":32520.0,"qtd":5},"CRM INTELLIG":{"valor":353224.66,"qtd":6},"SERASA S.A":{"valor":72000.0,"qtd":1},"TOTVS S.A":{"valor":380980.0,"qtd":11},"WELLHUB":{"valor":32400.0,"qtd":1},"CLARO MATRIZ":{"valor":28083.99,"qtd":14},"TICKET ACCOR":{"valor":720000.0,"qtd":1},"FIRE LESS":{"valor":229918.35,"qtd":12},"WHITE METAL":{"valor":16952.0,"qtd":1},"ITALBRONZE":{"valor":62073.66,"qtd":4},"MAZATOOLS":{"valor":8385.18,"qtd":3},"BT":{"valor":27117.62,"qtd":30},"SORIDRAULICA":{"valor":5200.0,"qtd":2},"HIMEC EQUIPA":{"valor":3260.0,"qtd":2},"SO MARCAS":{"valor":28379.44,"qtd":14},"REIS OFFICE":{"valor":22500.0,"qtd":1},"6CA":{"valor":722819.76,"qtd":8},"VERTO":{"valor":284445.0,"qtd":1},"PREVINSA":{"valor":3500.0,"qtd":1},"MASTER SAFE":{"valor":37700.0,"qtd":4},"GAC REFORMA":{"valor":35880.0,"qtd":11},"CLAITON ROBE":{"valor":48650.0,"qtd":4},"IBPG":{"valor":100957.0,"qtd":3},"GIMBA":{"valor":20242.89,"qtd":186},"WL VEDAÇÕES3":{"valor":7670.28,"qtd":35},"CAJU":{"valor":253768.27,"qtd":16},"CREA RJ":{"valor":2665.36,"qtd":1},"TOKIO":{"valor":49086.99,"qtd":9},"R2 SAFETY":{"valor":18376.16,"qtd":28},"JAPI PRINTER":{"valor":9730.0,"qtd":4},"FTM MECÂNICA":{"valor":30510.0,"qtd":14},"GRAFICA VISA":{"valor":5348.0,"qtd":7},"TOTVS SP":{"valor":17259.0,"qtd":1},"PORTO":{"valor":32650.4,"qtd":3},"BEST HOMEN":{"valor":590.0,"qtd":1},"GREENLEGIS":{"valor":9576.0,"qtd":2},"IBAMA":{"valor":10274.76,"qtd":2},"SERV AGUA":{"valor":10777.67,"qtd":20},"TESTEFER":{"valor":134.0,"qtd":1},"HISERV":{"valor":3240.0,"qtd":2},"METALINOX CO":{"valor":153236.81,"qtd":18},"PRESTAMPA":{"valor":5601.32,"qtd":2},"RIO TEC":{"valor":14517.02,"qtd":8},"TIMOTECH":{"valor":2841420.4,"qtd":553},"CANADENSE":{"valor":16560.0,"qtd":3},"CLARUS":{"valor":2447.9,"qtd":1},"NAG ABRASIVO":{"valor":8990.6,"qtd":2},"HONTECH":{"valor":10934.53,"qtd":2},"JATI":{"valor":87083.57,"qtd":7},"FALCONERY":{"valor":45295.0,"qtd":5},"TECNOVIC":{"valor":1033.0,"qtd":2},"VISION":{"valor":417603.98,"qtd":45},"FEDEX":{"valor":21416.29,"qtd":2},"ICI UNIFORME":{"valor":20030.38,"qtd":4},"ELETRIZEL":{"valor":8746.67,"qtd":37},"AÇOS FAVORIT":{"valor":100702.74,"qtd":4},"REMNO":{"valor":63419.76,"qtd":8},"LUCIMEIRE":{"valor":217.0,"qtd":2},"POROFIL":{"valor":9076.8,"qtd":4},"MCE VEDAÇÕES":{"valor":27347.06,"qtd":8},"SYSTEM SEAL":{"valor":10132.24,"qtd":12},"RISE":{"valor":22500.0,"qtd":1},"SINGULAR":{"valor":17303.0,"qtd":19},"Barcarol":{"valor":7695.0,"qtd":1},"BUFFET NADYR":{"valor":28300.0,"qtd":1},"ODONTOPREV S":{"valor":84165.55,"qtd":28},"BRADESCO":{"valor":3848300.0,"qtd":30},"ICATU SEGURO":{"valor":68447.04,"qtd":24},"WE4YOU":{"valor":11880.0,"qtd":1},"MTCA":{"valor":7613.2,"qtd":2},"GLOBAL DIS":{"valor":26439.9,"qtd":19},"ABIMAQ":{"valor":3700.0,"qtd":2},"JPL MOTORES":{"valor":5548.4,"qtd":1},"HILTI DO BRA":{"valor":3363.89,"qtd":3},"VIAÇÃO VICEN":{"valor":16000.0,"qtd":1},"L.P.TRANSPOR":{"valor":14400.0,"qtd":1},"BRAMA":{"valor":8615.55,"qtd":29},"CONEXÃO SJC":{"valor":1659.99,"qtd":2},"SV EVENTOS":{"valor":12900.0,"qtd":1},"Cascadura R":{"valor":58480.0,"qtd":3},"HIDRACON":{"valor":4716.72,"qtd":1},"AMPCO METAL":{"valor":7865.0,"qtd":1},"JUNDIPAR":{"valor":2860.74,"qtd":43},"UNICA INST":{"valor":145200.0,"qtd":7},"ASCENDE LTDA":{"valor":9850.0,"qtd":7},"WEST GROUP":{"valor":4944.0,"qtd":3},"LABORMETRO":{"valor":20359.74,"qtd":7},"MATHEUS DEFI":{"valor":5319.06,"qtd":3},"REFIT SOLUÇO":{"valor":13110.37,"qtd":5},"QUALITY RGM":{"valor":369258.68,"qtd":3},"MAGETECH":{"valor":3980.0,"qtd":2},"QUADREM":{"valor":91961.25,"qtd":3},"Ale Matteo":{"valor":7600.0,"qtd":1},"VULKAN":{"valor":66004.0,"qtd":1},"MBF":{"valor":24461.14,"qtd":3},"REVO FERRAME":{"valor":9674.25,"qtd":8},"EMERSON FA":{"valor":3384.0,"qtd":1},"JPM":{"valor":2500.0,"qtd":1},"SONED":{"valor":58194.93,"qtd":8},"CS QUALIDADE":{"valor":4387.5,"qtd":8},"ALAMO ENG":{"valor":36902.5,"qtd":3},"UNIPAR RANPA":{"valor":8069.04,"qtd":6},"TECFLUX":{"valor":5707.42,"qtd":3},"JDUARTE":{"valor":13398.8,"qtd":3},"WORKPLACE":{"valor":1800.0,"qtd":2},"GUARDINHA":{"valor":86400.0,"qtd":2},"VOAGE":{"valor":263237.7,"qtd":72},"REDEPETRO":{"valor":1872.0,"qtd":1},"ANHANGUERA 2":{"valor":1455.62,"qtd":4},"STEEL MESH":{"valor":3170.0,"qtd":1},"SmartGrid":{"valor":6000.0,"qtd":1},"CTJ OIL & GA":{"valor":720.0,"qtd":1},"ENVELOPLAS":{"valor":2780.0,"qtd":3},"ACTION":{"valor":3132.6,"qtd":1},"BRASIL EAD":{"valor":570.0,"qtd":5},"ARAPONGAS":{"valor":162188.85,"qtd":1},"Galv BH":{"valor":2250.0,"qtd":4},"GONTERMANN":{"valor":56228.17,"qtd":2},"ADESIL":{"valor":3634.5,"qtd":3},"FAST FEIRAS":{"valor":32000.0,"qtd":1},"INFORMA":{"valor":43955.0,"qtd":1},"MOGI":{"valor":6726.5,"qtd":7},"PREF CAJAMAR":{"valor":22447.12,"qtd":2},"ECONET":{"valor":700.0,"qtd":2},"CENTER TOOLS":{"valor":30925.01,"qtd":22},"NHJ DO BRASI":{"valor":34231.9,"qtd":4},"VES-T UNIFOR":{"valor":26496.0,"qtd":8},"Fort Soluçõe":{"valor":21780.79,"qtd":1},"CASCADURA SP":{"valor":39940.0,"qtd":1},"PIONEIRA":{"valor":1684.17,"qtd":1},"FABIA VITORI":{"valor":12000.0,"qtd":1},"RICO SAFETY":{"valor":4852.25,"qtd":5},"NEW EXPO":{"valor":1680.0,"qtd":1},"MAKITA VEDA":{"valor":3413.76,"qtd":3},"SINDGRAF":{"valor":13980.0,"qtd":4},"BSI":{"valor":20126.31,"qtd":4},"ANGEROL":{"valor":10430.0,"qtd":3},"FENAC":{"valor":2137.28,"qtd":8},"CARBONO AM":{"valor":10520.0,"qtd":2},"EXTINGOLD":{"valor":3547.0,"qtd":1},"ACE":{"valor":5977.87,"qtd":1},"DENKENTECH":{"valor":567.05,"qtd":2},"Wyasheslav R":{"valor":4000.0,"qtd":1},"ALLIANZ SEG":{"valor":6331.11,"qtd":1},"MATRIZPEL":{"valor":9480.66,"qtd":2},"EMPILHANOBRE":{"valor":11746.0,"qtd":1},"APONTO":{"valor":4250.0,"qtd":3},"IMPÉRIO DO M":{"valor":8915.2,"qtd":3},"JS TINTAS":{"valor":8767.2,"qtd":18},"AXA SEGUROS":{"valor":125039.88,"qtd":2},"SODEXO SP":{"valor":407.52,"qtd":4},"MKS REDUTORE":{"valor":689.0,"qtd":3},"ZIRTEC":{"valor":8954.87,"qtd":1},"BS SANEAMENT":{"valor":3260.0,"qtd":1},"CORR SOLUTIO":{"valor":2498.34,"qtd":2},"SCAN 2":{"valor":4993.0,"qtd":1},"HUSSEIN":{"valor":2341.62,"qtd":2},"CARMELO":{"valor":10465.0,"qtd":1},"LUCIANA F. B":{"valor":1000.0,"qtd":1},"PORTO SEGURO":{"valor":4205.61,"qtd":1},"GIFOR":{"valor":2086.44,"qtd":2},"METAL NORTE":{"valor":6400.0,"qtd":2},"VERSATRONIC":{"valor":10000.0,"qtd":1},"MAPDATA":{"valor":31912.59,"qtd":1},"DISTRIB AGUA":{"valor":2790.0,"qtd":1},"Yelum Seguro":{"valor":179973.56,"qtd":1},"MUNDIAL":{"valor":54684.0,"qtd":1},"RUSPRISTEEL1":{"valor":10184.96,"qtd":2},"SMAGON1":{"valor":26000.0,"qtd":1},"DEVELOP":{"valor":70672.77,"qtd":2},"JE VEDACOES":{"valor":181.5,"qtd":1},"REIS BATERIA":{"valor":1206.81,"qtd":1},"INSPESOLDA":{"valor":18000.0,"qtd":1},"EMBRATEL":{"valor":16.89,"qtd":1},"INTENGE":{"valor":35136.0,"qtd":1},"Alametais Co":{"valor":2174.45,"qtd":1},"HCG EQUIP.":{"valor":2111.94,"qtd":1},"MAXXIMA":{"valor":390.0,"qtd":1},"Leal, Cotrim":{"valor":160000.0,"qtd":1},"SUPERFITAS":{"valor":3955.0,"qtd":1},"CAVALCANTE":{"valor":59376003.54,"qtd":2},"VIKLA":{"valor":2165.84,"qtd":2},"SIGMA 3D":{"valor":19918.97,"qtd":2},"W7 PROMO":{"valor":348.3,"qtd":1},"Dell Computa":{"valor":22126.87,"qtd":1},"HSR TECH":{"valor":4500.0,"qtd":1},"SERGIO FARIA":{"valor":6336.0,"qtd":1}},"compradores":{"cristian":{"valor":3364941.12,"qtd":127,"label":"Cristian"},"tpereira":{"valor":5978032.94,"qtd":1187,"label":"T. Pereira"},"beatriz":{"valor":16862638.2,"qtd":2476,"label":"Beatriz"},"jribeiro":{"valor":39234.5,"qtd":12,"label":"J. Ribeiro"},"cialves":{"valor":21239.81,"qtd":8,"label":"C. Alves"},"bruno":{"valor":61664117.49,"qtd":540,"label":"Bruno"}},"atrasoMediana":4.0,"pctNoPrazo":35.6},"2026-01":{"valorTotal":8230659.19,"qtdPedidos":527,"valorNacional":6801843.29,"valorImportado":1428815.9,"qtdNacional":425,"qtdImportado":102,"natureza":{"Compra":{"valor":4411413.02,"qtd":386},"Serviço":{"valor":3818879.17,"qtd":140},"Beneficiamento":{"valor":367.0,"qtd":1}},"fornecedores":{"4AG":{"valor":35683.32,"qtd":4},"OTIMA ESTRA":{"valor":79200.0,"qtd":1},"FLASH":{"valor":800.0,"qtd":1},"PLASTERMO":{"valor":35149.45,"qtd":14},"TIMOTEC":{"valor":504282.81,"qtd":83},"VALFLUOR":{"valor":21327.0,"qtd":20},"BRIZANTE":{"valor":12076.4,"qtd":24},"1DG":{"valor":103714.31,"qtd":6},"TOTVS IBIRAP":{"valor":36780.68,"qtd":4},"LAVAPANO LTD":{"valor":13426.8,"qtd":1},"CREA":{"valor":5129.95,"qtd":1},"MG3":{"valor":3643.69,"qtd":2},"GS CORRENTES":{"valor":5548.0,"qtd":4},"VEIRANO ADV":{"valor":55805.88,"qtd":12},"NORD-LOCK":{"valor":45583.49,"qtd":3},"LACNAM":{"valor":96838.21,"qtd":4},"PRINER":{"valor":812.0,"qtd":2},"POLGAS DISTR":{"valor":948.4,"qtd":1},"4AS":{"valor":773817.93,"qtd":63},"ALPHA METALI":{"valor":22880.0,"qtd":3},"MESTRA VEDAB":{"valor":55.04,"qtd":4},"TELEFONICA":{"valor":57160.68,"qtd":22},"LOCALIZA MG2":{"valor":1870234.38,"qtd":13},"DELL COMP":{"valor":10694.85,"qtd":1},"DELL PR":{"valor":1499.22,"qtd":1},"RECONTECH":{"valor":86725.22,"qtd":2},"PROCUREMENT":{"valor":642.0,"qtd":1},"JUNDIANEL":{"valor":247.88,"qtd":6},"GLOBAL JUN.1":{"valor":3953.05,"qtd":7},"4AC":{"valor":47473.13,"qtd":24},"HIDROVARZEA":{"valor":19200.0,"qtd":1},"FSA QUALITY":{"valor":4260.0,"qtd":1},"EINSTEIN V":{"valor":5223.74,"qtd":1},"JUMAR":{"valor":18000.0,"qtd":1},"VIALIX":{"valor":6209.47,"qtd":1},"NEXT":{"valor":10740.0,"qtd":1},"ED SILVA E N":{"valor":3000.0,"qtd":1},"PB IMBETIBA":{"valor":60000.0,"qtd":1},"RONALDO CORR":{"valor":45351.7,"qtd":19},"J S ENGENHAR":{"valor":100.0,"qtd":1},"TERA":{"valor":24330.24,"qtd":2},"PRO SOLUTION":{"valor":315766.41,"qtd":5},"BDO RCS 2":{"valor":190144.35,"qtd":3},"PLAM MARCENA":{"valor":5698.5,"qtd":4},"PAMAG":{"valor":2432.5,"qtd":1},"JOTEC SOLUÇ":{"valor":16707.0,"qtd":5},"COPPI":{"valor":2205.92,"qtd":2},"Correio":{"valor":3600.0,"qtd":1},"GLEZIO ROCHA":{"valor":135887.29,"qtd":2},"GRUPO MCV":{"valor":6000.0,"qtd":2},"GOTO":{"valor":4800.0,"qtd":2},"KPMG":{"valor":130000.0,"qtd":1},"LACLAW":{"valor":5400.0,"qtd":1},"LELLO":{"valor":126000.0,"qtd":2},"LEVYCAM":{"valor":22000.0,"qtd":2},"METRA":{"valor":305090.04,"qtd":1},"ONFLY":{"valor":6480.0,"qtd":2},"OPTFIBER":{"valor":32520.0,"qtd":5},"CRM INTELLIG":{"valor":265000.0,"qtd":2},"SERASA S.A":{"valor":72000.0,"qtd":1},"TOTVS S.A":{"valor":294580.0,"qtd":8},"WELLHUB":{"valor":32400.0,"qtd":1},"CLARO MATRIZ":{"valor":28083.99,"qtd":14},"TICKET ACCOR":{"valor":720000.0,"qtd":1},"FIRE LESS":{"valor":49538.05,"qtd":4},"WHITE METAL":{"valor":16952.0,"qtd":1},"ITALBRONZE":{"valor":44170.31,"qtd":2},"MAZATOOLS":{"valor":1618.0,"qtd":1},"BT":{"valor":10685.47,"qtd":9},"SORIDRAULICA":{"valor":3300.0,"qtd":1},"HIMEC EQUIPA":{"valor":3260.0,"qtd":2},"SO MARCAS":{"valor":2679.0,"qtd":3},"REIS OFFICE":{"valor":22500.0,"qtd":1},"6CA":{"valor":468127.21,"qtd":5},"VERTO":{"valor":284445.0,"qtd":1},"PREVINSA":{"valor":3500.0,"qtd":1},"MASTER SAFE":{"valor":6850.0,"qtd":1},"GAC REFORMA":{"valor":900.0,"qtd":1},"CLAITON ROBE":{"valor":47600.0,"qtd":3},"IBPG":{"valor":88200.0,"qtd":1},"GIMBA":{"valor":3611.89,"qtd":28},"WL VEDAÇÕES3":{"valor":36.0,"qtd":1},"CAJU":{"valor":253768.27,"qtd":16},"CREA RJ":{"valor":2665.36,"qtd":1},"TOKIO":{"valor":32846.64,"qtd":2},"R2 SAFETY":{"valor":2687.08,"qtd":4},"JAPI PRINTER":{"valor":7000.0,"qtd":3},"FTM MECÂNICA":{"valor":4125.0,"qtd":1},"GRAFICA VISA":{"valor":990.0,"qtd":1},"TOTVS SP":{"valor":17259.0,"qtd":1}},"compradores":{"cristian":{"valor":3329463.88,"qtd":118,"label":"Cristian"},"tpereira":{"valor":241449.76,"qtd":52,"label":"T. Pereira"},"beatriz":{"valor":4642114.65,"qtd":347,"label":"Beatriz"},"jribeiro":{"valor":17630.9,"qtd":10,"label":"J. Ribeiro"}},"atrasoMediana":10,"pctNoPrazo":19.9},"2026-02":{"valorTotal":6439827.37,"qtdPedidos":654,"valorNacional":5652495.16,"valorImportado":787332.21,"qtdNacional":442,"qtdImportado":212,"natureza":{"Compra":{"valor":1852361.17,"qtd":502},"Serviço":{"valor":4587466.2,"qtd":152}},"fornecedores":{"4AS":{"valor":171693.14,"qtd":169},"PORTO":{"valor":30910.84,"qtd":2},"ED SILVA E N":{"valor":14653.3,"qtd":2},"BEST HOMEN":{"valor":590.0,"qtd":1},"GREENLEGIS":{"valor":9576.0,"qtd":2},"GLOBAL JUN.1":{"valor":23849.65,"qtd":15},"WL VEDAÇÕES3":{"valor":347.2,"qtd":9},"IBAMA":{"valor":9274.76,"qtd":1},"4AC":{"valor":169519.03,"qtd":31},"JUNDIANEL":{"valor":285.95,"qtd":5},"BRIZANTE":{"valor":10628.96,"qtd":11},"SERV AGUA":{"valor":900.0,"qtd":3},"GIMBA":{"valor":4303.33,"qtd":46},"VALFLUOR":{"valor":13922.4,"qtd":10},"TESTEFER":{"valor":134.0,"qtd":1},"TIMOTEC":{"valor":447813.45,"qtd":39},"TOTVS S.A":{"valor":86400.0,"qtd":3},"HISERV":{"valor":3240.0,"qtd":2},"METALINOX CO":{"valor":29372.97,"qtd":3},"1DG":{"valor":405338.41,"qtd":9},"PRESTAMPA":{"valor":2801.16,"qtd":1},"RIO TEC":{"valor":1450.0,"qtd":1},"TOKIO":{"valor":3083.52,"qtd":1},"BDO RCS 2":{"valor":411.65,"qtd":2},"TOTVS IBIRAP":{"valor":21513.14,"qtd":4},"TIMOTECH":{"valor":90237.76,"qtd":41},"CANADENSE":{"valor":3980.0,"qtd":1},"GLEZIO ROCHA":{"valor":2206.31,"qtd":1},"CLARUS":{"valor":2447.9,"qtd":1},"NAG ABRASIVO":{"valor":3460.0,"qtd":1},"HONTECH":{"valor":5721.4,"qtd":1},"VIALIX":{"valor":1448.83,"qtd":1},"JATI":{"valor":43864.84,"qtd":2},"R2 SAFETY":{"valor":2687.08,"qtd":4},"CRM INTELLIG":{"valor":87931.17,"qtd":1},"FALCONERY":{"valor":28928.0,"qtd":3},"TECNOVIC":{"valor":1033.0,"qtd":2},"VISION":{"valor":277839.73,"qtd":43},"4AG":{"valor":40781.64,"qtd":3},"FEDEX":{"valor":11738.35,"qtd":1},"ICI UNIFORME":{"valor":4726.7,"qtd":1},"ELETRIZEL":{"valor":6600.64,"qtd":18},"AÇOS FAVORIT":{"valor":70282.71,"qtd":2},"REMNO":{"valor":24686.0,"qtd":3},"LUCIMEIRE":{"valor":104.0,"qtd":1},"PLASTERMO":{"valor":4354.88,"qtd":3},"POROFIL":{"valor":892.8,"qtd":1},"MCE VEDAÇÕES":{"valor":156.8,"qtd":1},"SYSTEM SEAL":{"valor":3390.0,"qtd":3},"VEIRANO ADV":{"valor":25614.58,"qtd":2},"RISE":{"valor":22500.0,"qtd":1},"MESTRA VEDAB":{"valor":4987.6,"qtd":5},"SINGULAR":{"valor":1152.0,"qtd":1},"Barcarol":{"valor":7695.0,"qtd":1},"JAPI PRINTER":{"valor":2730.0,"qtd":1},"BUFFET NADYR":{"valor":28300.0,"qtd":1},"LOCALIZA MG2":{"valor":4956.44,"qtd":5},"GAC REFORMA":{"valor":5300.0,"qtd":2},"JOTEC SOLUÇ":{"valor":4740.0,"qtd":2},"ODONTOPREV S":{"valor":84165.55,"qtd":28},"BRADESCO":{"valor":3848300.0,"qtd":30},"ICATU SEGURO":{"valor":68447.04,"qtd":24},"WE4YOU":{"valor":11880.0,"qtd":1},"RONALDO CORR":{"valor":9729.7,"qtd":12},"SO MARCAS":{"valor":6489.9,"qtd":5},"MTCA":{"valor":7200.0,"qtd":1},"DELL COMP":{"valor":20290.97,"qtd":1},"DELL PR":{"valor":3568.25,"qtd":1},"GLOBAL DIS":{"valor":11364.9,"qtd":9},"ABIMAQ":{"valor":1850.0,"qtd":1},"JPL MOTORES":{"valor":5548.4,"qtd":1},"LACNAM":{"valor":49964.0,"qtd":1},"HILTI DO BRA":{"valor":3363.89,"qtd":3},"BT":{"valor":167.75,"qtd":1},"PRINER":{"valor":2008.0,"qtd":1},"VIAÇÃO VICEN":{"valor":16000.0,"qtd":1}},"compradores":{"tpereira":{"valor":238212.45,"qtd":140,"label":"T. Pereira"},"beatriz":{"valor":6201614.92,"qtd":514,"label":"Beatriz"}},"atrasoMediana":2.0,"pctNoPrazo":16.2},"2026-03":{"valorTotal":2386090.26,"qtdPedidos":477,"valorNacional":1953771.43,"valorImportado":432318.82,"qtdNacional":380,"qtdImportado":97,"natureza":{"Serviço":{"valor":1022625.77,"qtd":84},"Compra":{"valor":1363464.49,"qtd":393}},"fornecedores":{"FTM MECÂNICA":{"valor":4125.0,"qtd":1},"L.P.TRANSPOR":{"valor":14400.0,"qtd":1},"BRAMA":{"valor":6020.75,"qtd":25},"CONEXÃO SJC":{"valor":1659.99,"qtd":2},"4AG":{"valor":60277.16,"qtd":2},"GAC REFORMA":{"valor":10450.0,"qtd":1},"TIMOTEC":{"valor":382065.11,"qtd":69},"TIMOTECH":{"valor":354764.58,"qtd":72},"SV EVENTOS":{"valor":12900.0,"qtd":1},"ITALBRONZE":{"valor":17903.35,"qtd":2},"Cascadura R":{"valor":42510.0,"qtd":2},"MAZATOOLS":{"valor":4225.78,"qtd":1},"PLASTERMO":{"valor":18277.76,"qtd":12},"HIDRACON":{"valor":4716.72,"qtd":1},"BRIZANTE":{"valor":16273.6,"qtd":31},"AMPCO METAL":{"valor":7865.0,"qtd":1},"JUNDIPAR":{"valor":555.0,"qtd":2},"4AS":{"valor":129760.88,"qtd":41},"4AC":{"valor":157500.15,"qtd":37},"1DG":{"valor":84780.63,"qtd":17},"GLOBAL JUN.1":{"valor":19863.4,"qtd":17},"JUNDIANEL":{"valor":1071.65,"qtd":10},"VALFLUOR":{"valor":980.0,"qtd":4},"MESTRA VEDAB":{"valor":328.14,"qtd":4},"GS CORRENTES":{"valor":1998.0,"qtd":3},"BT":{"valor":945.0,"qtd":1},"VIALIX":{"valor":6416.6,"qtd":2},"TOKIO":{"valor":6041.96,"qtd":2},"TOTVS IBIRAP":{"valor":4909.7,"qtd":2},"UNICA INST":{"valor":145200.0,"qtd":7},"SINGULAR":{"valor":1016.0,"qtd":1},"ASCENDE LTDA":{"valor":950.0,"qtd":2},"WEST GROUP":{"valor":57.0,"qtd":1},"LABORMETRO":{"valor":1015.33,"qtd":1},"SERV AGUA":{"valor":2710.0,"qtd":3},"MATHEUS DEFI":{"valor":3719.06,"qtd":2},"AÇOS FAVORIT":{"valor":19443.99,"qtd":1},"REFIT SOLUÇO":{"valor":2118.63,"qtd":1},"QUALITY RGM":{"valor":187070.54,"qtd":1},"MAGETECH":{"valor":3980.0,"qtd":2},"QUADREM":{"valor":47185.86,"qtd":1},"Ale Matteo":{"valor":7600.0,"qtd":1},"GRAFICA VISA":{"valor":1808.0,"qtd":1},"MG3":{"valor":99.12,"qtd":1},"LACNAM":{"valor":34901.14,"qtd":3},"ICI UNIFORME":{"valor":1640.0,"qtd":1},"RIO TEC":{"valor":1364.62,"qtd":3},"PAMAG":{"valor":2490.4,"qtd":5},"METRA":{"valor":1341.0,"qtd":1},"REMNO":{"valor":13883.76,"qtd":1},"WL VEDAÇÕES3":{"valor":362.1,"qtd":1},"FIRE LESS":{"valor":56520.4,"qtd":2},"COPPI":{"valor":2282.26,"qtd":2},"VEIRANO ADV":{"valor":28521.58,"qtd":2},"VULKAN":{"valor":66004.0,"qtd":1},"MBF":{"valor":12580.0,"qtd":1},"REVO FERRAME":{"valor":9674.25,"qtd":8},"EMERSON FA":{"valor":3384.0,"qtd":1},"LOCALIZA MG2":{"valor":5429.79,"qtd":7},"OTIMA ESTRA":{"valor":1022.05,"qtd":1},"GIMBA":{"valor":4030.15,"qtd":23},"JPM":{"valor":2500.0,"qtd":1},"VISION":{"valor":139764.24,"qtd":2},"SONED":{"valor":51300.0,"qtd":1},"JOTEC SOLUÇ":{"valor":1268.0,"qtd":1},"CS QUALIDADE":{"valor":1912.5,"qtd":1},"ALAMO ENG":{"valor":36902.5,"qtd":3},"UNIPAR RANPA":{"valor":2925.46,"qtd":3},"TECFLUX":{"valor":4757.02,"qtd":1},"NAG ABRASIVO":{"valor":5530.6,"qtd":1},"JDUARTE":{"valor":3000.0,"qtd":1},"WORKPLACE":{"valor":900.0,"qtd":1},"GUARDINHA":{"valor":86400.0,"qtd":2},"POLGAS DISTR":{"valor":1177.05,"qtd":2},"VOAGE":{"valor":2889.93,"qtd":1},"REDEPETRO":{"valor":1872.0,"qtd":1}},"compradores":{"beatriz":{"valor":2203693.3,"qtd":422,"label":"Beatriz"},"jribeiro":{"valor":14400.0,"qtd":1,"label":"J. Ribeiro"},"cristian":{"valor":4716.72,"qtd":1,"label":"Cristian"},"tpereira":{"valor":163280.24,"qtd":53,"label":"T. Pereira"}},"atrasoMediana":7,"pctNoPrazo":27.0},"2026-04":{"valorTotal":2051266.53,"qtdPedidos":417,"valorNacional":1142812.98,"valorImportado":908453.55,"qtdNacional":315,"qtdImportado":102,"natureza":{"Serviço":{"valor":690689.08,"qtd":99},"Compra":{"valor":1360577.45,"qtd":318}},"fornecedores":{"PAMAG":{"valor":4692.5,"qtd":2},"BRIZANTE":{"valor":7356.3,"qtd":16},"VALFLUOR":{"valor":2472.4,"qtd":5},"JUNDIANEL":{"valor":513.72,"qtd":9},"MESTRA VEDAB":{"valor":6825.68,"qtd":25},"GLOBAL JUN.1":{"valor":37447.48,"qtd":20},"LACNAM":{"valor":25462.05,"qtd":2},"4AS":{"valor":4766.1,"qtd":6},"TIMOTECH":{"valor":325825.56,"qtd":72},"MCE VEDAÇÕES":{"valor":21600.48,"qtd":5},"TIMOTEC":{"valor":122214.68,"qtd":29},"ANHANGUERA 2":{"valor":908.9,"qtd":3},"SERV AGUA":{"valor":1450.0,"qtd":4},"STEEL MESH":{"valor":3170.0,"qtd":1},"SmartGrid":{"valor":6000.0,"qtd":1},"POROFIL":{"valor":7440.0,"qtd":2},"COPPI":{"valor":10172.44,"qtd":4},"R2 SAFETY":{"valor":2687.08,"qtd":4},"1DG":{"valor":349585.91,"qtd":32},"JOTEC SOLUÇ":{"valor":8532.0,"qtd":4},"QUALITY RGM":{"valor":36836.62,"qtd":1},"4AC":{"valor":523199.47,"qtd":61},"OTIMA ESTRA":{"valor":13200.0,"qtd":1},"VOAGE":{"valor":9841.65,"qtd":4},"WORKPLACE":{"valor":900.0,"qtd":1},"RONALDO CORR":{"valor":42446.0,"qtd":16},"LABORMETRO":{"valor":15735.36,"qtd":1},"VIALIX":{"valor":1986.93,"qtd":1},"CTJ OIL & GA":{"valor":720.0,"qtd":1},"GAC REFORMA":{"valor":2700.0,"qtd":2},"ENVELOPLAS":{"valor":2780.0,"qtd":3},"ACTION":{"valor":3132.6,"qtd":1},"BRASIL EAD":{"valor":285.0,"qtd":3},"ASCENDE LTDA":{"valor":500.0,"qtd":1},"SINGULAR":{"valor":2491.0,"qtd":1},"SO MARCAS":{"valor":653.45,"qtd":1},"ARAPONGAS":{"valor":162188.85,"qtd":1},"Galv BH":{"valor":1050.0,"qtd":2},"GONTERMANN":{"valor":56099.01,"qtd":1},"ADESIL":{"valor":3634.5,"qtd":3},"PORTO":{"valor":1739.56,"qtd":1},"FAST FEIRAS":{"valor":32000.0,"qtd":1},"INFORMA":{"valor":43955.0,"qtd":1},"QUADREM":{"valor":14398.92,"qtd":1},"LUCIMEIRE":{"valor":113.0,"qtd":1},"REMNO":{"valor":20050.0,"qtd":3},"REFIT SOLUÇO":{"valor":4356.77,"qtd":1},"MOGI":{"valor":1188.9,"qtd":1},"Cascadura R":{"valor":15970.0,"qtd":1},"VEIRANO ADV":{"valor":7203.6,"qtd":1},"PROCUREMENT":{"valor":214.0,"qtd":1},"PREF CAJAMAR":{"valor":18705.92,"qtd":1},"TOTVS IBIRAP":{"valor":2000.0,"qtd":1},"ECONET":{"valor":700.0,"qtd":2},"LOCALIZA MG2":{"valor":5379.04,"qtd":7},"SYSTEM SEAL":{"valor":2214.0,"qtd":2},"GLEZIO ROCHA":{"valor":5345.0,"qtd":1},"4AG":{"valor":30902.07,"qtd":3},"CENTER TOOLS":{"valor":1568.0,"qtd":4},"PLASTERMO":{"valor":3698.57,"qtd":1},"PLAM MARCENA":{"valor":1452.6,"qtd":1},"HONTECH":{"valor":5213.13,"qtd":1},"ELETRIZEL":{"valor":1160.0,"qtd":2},"GIMBA":{"valor":2234.74,"qtd":26}},"compradores":{"beatriz":{"valor":1437001.89,"qtd":331,"label":"Beatriz"},"tpereira":{"valor":607061.04,"qtd":85,"label":"T. Pereira"},"jribeiro":{"valor":7203.6,"qtd":1,"label":"J. Ribeiro"}},"atrasoMediana":6,"pctNoPrazo":30.0},"2026-05":{"valorTotal":1401119.02,"qtdPedidos":403,"valorNacional":1069106.36,"valorImportado":332012.66,"qtdNacional":323,"qtdImportado":80,"natureza":{"Serviço":{"valor":459698.98,"qtd":66},"Compra":{"valor":941420.04,"qtd":337}},"fornecedores":{"NHJ DO BRASI":{"valor":34231.9,"qtd":4},"TIMOTEC":{"valor":81251.99,"qtd":35},"MOGI":{"valor":5537.6,"qtd":6},"4AC":{"valor":301529.67,"qtd":66},"GAC REFORMA":{"valor":1150.0,"qtd":1},"TIMOTECH":{"valor":318192.7,"qtd":75},"1DG":{"valor":22599.59,"qtd":8},"SINGULAR":{"valor":2491.0,"qtd":4},"FIRE LESS":{"valor":28127.15,"qtd":2},"BT":{"valor":745.0,"qtd":2},"BRIZANTE":{"valor":6959.1,"qtd":20},"PLASTERMO":{"valor":80851.72,"qtd":23},"RONALDO CORR":{"valor":17403.97,"qtd":23},"CRM INTELLIG":{"valor":102.7,"qtd":1},"VIALIX":{"valor":6326.2,"qtd":1},"MTCA":{"valor":413.2,"qtd":1},"GLOBAL JUN.1":{"valor":29991.5,"qtd":16},"MESTRA VEDAB":{"valor":347.77,"qtd":6},"VES-T UNIFOR":{"valor":13536.0,"qtd":4},"RECONTECH":{"valor":13253.03,"qtd":1},"TOTVS IBIRAP":{"valor":31385.84,"qtd":4},"PRINER":{"valor":110.0,"qtd":1},"4AS":{"valor":7883.4,"qtd":6},"Fort Soluçõe":{"valor":21780.79,"qtd":1},"CASCADURA SP":{"valor":39940.0,"qtd":1},"SONED":{"valor":6894.93,"qtd":7},"VOAGE":{"valor":54802.47,"qtd":8},"ASCENDE LTDA":{"valor":2000.0,"qtd":2},"PIONEIRA":{"valor":1684.17,"qtd":1},"FABIA VITORI":{"valor":12000.0,"qtd":1},"LACNAM":{"valor":6156.88,"qtd":1},"MG3":{"valor":2044.35,"qtd":1},"GLOBAL DIS":{"valor":5025.0,"qtd":5},"DELL COMP":{"valor":18797.56,"qtd":2},"DELL PR":{"valor":1837.56,"qtd":1},"UNIPAR RANPA":{"valor":2248.87,"qtd":1},"R2 SAFETY":{"valor":5027.44,"qtd":8},"RICO SAFETY":{"valor":4852.25,"qtd":5},"NEW EXPO":{"valor":1680.0,"qtd":1},"BRASIL EAD":{"valor":228.0,"qtd":1},"FTM MECÂNICA":{"valor":2500.0,"qtd":2},"FALCONERY":{"valor":2650.0,"qtd":1},"REFIT SOLUÇO":{"valor":880.0,"qtd":1},"PB IMBETIBA":{"valor":45000.0,"qtd":1},"METALINOX CO":{"valor":13444.98,"qtd":2},"AÇOS FAVORIT":{"valor":10976.04,"qtd":1},"MASTER SAFE":{"valor":22350.0,"qtd":2},"MAKITA VEDA":{"valor":3413.76,"qtd":3},"VEIRANO ADV":{"valor":69388.2,"qtd":1},"SINDGRAF":{"valor":4320.0,"qtd":2},"GRAFICA VISA":{"valor":560.0,"qtd":1},"JUNDIPAR":{"valor":239.92,"qtd":15},"LOCALIZA MG2":{"valor":2890.69,"qtd":3},"WEST GROUP":{"valor":4887.0,"qtd":2},"VALFLUOR":{"valor":782.8,"qtd":3},"RIO TEC":{"valor":5000.0,"qtd":2},"BSI":{"valor":2053.14,"qtd":1},"PREF CAJAMAR":{"valor":3741.2,"qtd":1},"REMNO":{"valor":4800.0,"qtd":1},"ANGEROL":{"valor":9820.0,"qtd":1}},"compradores":{"beatriz":{"valor":1064565.63,"qtd":319,"label":"Beatriz"},"tpereira":{"valor":336553.39,"qtd":84,"label":"T. Pereira"}},"atrasoMediana":2,"pctNoPrazo":46.4},"2026-06":{"valorTotal":2447491.92,"qtdPedidos":726,"valorNacional":1228180.06,"valorImportado":1219311.86,"qtdNacional":498,"qtdImportado":228,"natureza":{"Compra":{"valor":1707027.8,"qtd":617},"Serviço":{"valor":740464.11,"qtd":109}},"fornecedores":{"TIMOTEC":{"valor":209708.91,"qtd":78},"JUNDIPAR":{"valor":485.09,"qtd":23},"GAC REFORMA":{"valor":5380.0,"qtd":2},"FENAC":{"valor":1540.88,"qtd":7},"TIMOTECH":{"valor":267078.58,"qtd":80},"SORIDRAULICA":{"valor":1900.0,"qtd":1},"BT":{"valor":14421.86,"qtd":16},"GRAFICA VISA":{"valor":750.0,"qtd":2},"CARBONO AM":{"valor":960.0,"qtd":1},"METRA":{"valor":3456.0,"qtd":1},"4AC":{"valor":414879.75,"qtd":126},"4AS":{"valor":370084.09,"qtd":72},"EXTINGOLD":{"valor":3547.0,"qtd":1},"JOTEC SOLUÇ":{"valor":3280.0,"qtd":1},"PLASTERMO":{"valor":8730.61,"qtd":8},"OTIMA ESTRA":{"valor":13200.0,"qtd":1},"GIMBA":{"valor":2760.71,"qtd":33},"MESTRA VEDAB":{"valor":7191.38,"qtd":27},"ANGEROL":{"valor":160.0,"qtd":1},"BRIZANTE":{"valor":16800.2,"qtd":34},"TOTVS IBIRAP":{"valor":868.57,"qtd":3},"COPPI":{"valor":3045.0,"qtd":2},"MG3":{"valor":14323.25,"qtd":5},"VALFLUOR":{"valor":4981.12,"qtd":5},"1DG":{"valor":80473.93,"qtd":12},"ACE":{"valor":5977.87,"qtd":1},"POROFIL":{"valor":744.0,"qtd":1},"DENKENTECH":{"valor":567.05,"qtd":2},"GLOBAL JUN.1":{"valor":14289.05,"qtd":18},"DELL COMP":{"valor":55975.04,"qtd":1},"DELL PR":{"valor":10090.12,"qtd":1},"SERV AGUA":{"valor":2290.0,"qtd":5},"GONTERMANN":{"valor":129.16,"qtd":1},"QUALITY RGM":{"valor":145351.52,"qtd":1},"Wyasheslav R":{"valor":4000.0,"qtd":1},"VOAGE":{"valor":107056.5,"qtd":28},"6CA":{"valor":254692.55,"qtd":3},"FTM MECÂNICA":{"valor":2500.0,"qtd":1},"ALLIANZ SEG":{"valor":6331.11,"qtd":1},"GLEZIO ROCHA":{"valor":4925.0,"qtd":1},"VIALIX":{"valor":1582.59,"qtd":1},"LACNAM":{"valor":18579.34,"qtd":1},"VES-T UNIFOR":{"valor":12960.0,"qtd":4},"4AG":{"valor":99181.53,"qtd":15},"SINDGRAF":{"valor":9660.0,"qtd":2},"J S ENGENHAR":{"valor":400.0,"qtd":1},"R2 SAFETY":{"valor":2687.08,"qtd":4},"METALINOX CO":{"valor":1700.0,"qtd":1},"PRINER":{"valor":440.0,"qtd":1},"LOCALIZA MG2":{"valor":17755.75,"qtd":10},"MATRIZPEL":{"valor":9480.66,"qtd":2},"EMPILHANOBRE":{"valor":11746.0,"qtd":1},"SINGULAR":{"valor":7037.0,"qtd":10},"APONTO":{"valor":3750.0,"qtd":2},"IMPÉRIO DO M":{"valor":8135.2,"qtd":2},"WL VEDAÇÕES3":{"valor":60.0,"qtd":1},"ELETRIZEL":{"valor":986.03,"qtd":17},"JS TINTAS":{"valor":6092.0,"qtd":8},"BSI":{"valor":17075.52,"qtd":2},"ALPHA METALI":{"valor":11245.0,"qtd":2},"AXA SEGUROS":{"valor":91587.82,"qtd":1},"SODEXO SP":{"valor":331.11,"qtd":2},"SYSTEM SEAL":{"valor":286.0,"qtd":2},"MKS REDUTORE":{"valor":689.0,"qtd":3},"ZIRTEC":{"valor":8954.87,"qtd":1},"BS SANEAMENT":{"valor":3260.0,"qtd":1},"RONALDO CORR":{"valor":10420.0,"qtd":9},"PRESTAMPA":{"valor":2800.16,"qtd":1},"CORR SOLUTIO":{"valor":2498.34,"qtd":2},"CS QUALIDADE":{"valor":2475.0,"qtd":7},"SCAN 2":{"valor":4993.0,"qtd":1},"FALCONERY":{"valor":13717.0,"qtd":1}},"compradores":{"beatriz":{"valor":1225041.95,"qtd":495,"label":"Beatriz"},"tpereira":{"valor":1222449.97,"qtd":231,"label":"T. Pereira"}},"atrasoMediana":7.0,"pctNoPrazo":28.1},"2026-07":{"valorTotal":3301394.6,"qtdPedidos":569,"valorNacional":2057782.89,"valorImportado":1243611.71,"qtdNacional":437,"qtdImportado":132,"natureza":{"Compra":{"valor":2605694.85,"qtd":489},"Serviço":{"valor":695699.75,"qtd":80}},"fornecedores":{"TIMOTEC":{"valor":210743.56,"qtd":79},"4AG":{"valor":112955.86,"qtd":11},"REFIT SOLUÇO":{"valor":5754.97,"qtd":2},"TOTVS IBIRAP":{"valor":191769.71,"qtd":6},"HUSSEIN":{"valor":2341.62,"qtd":2},"CARMELO":{"valor":10465.0,"qtd":1},"OTIMA ESTRA":{"valor":17690.93,"qtd":3},"GLOBAL JUN.1":{"valor":28661.85,"qtd":26},"BRIZANTE":{"valor":33097.4,"qtd":53},"MG3":{"valor":3975.43,"qtd":4},"PLASTERMO":{"valor":60472.22,"qtd":21},"MESTRA VEDAB":{"valor":1453.17,"qtd":16},"LUCIANA F. B":{"valor":1000.0,"qtd":1},"FENAC":{"valor":596.4,"qtd":1},"4AC":{"valor":917665.83,"qtd":81},"TIMOTECH":{"valor":865896.24,"qtd":70},"IMPÉRIO DO M":{"valor":780.0,"qtd":1},"4AS":{"valor":172529.15,"qtd":23},"1DG":{"valor":40460.87,"qtd":17},"TOKIO":{"valor":5409.28,"qtd":3},"RONALDO CORR":{"valor":22789.0,"qtd":11},"PORTO SEGURO":{"valor":4205.61,"qtd":1},"AXA SEGUROS":{"valor":33452.06,"qtd":1},"SODEXO SP":{"valor":76.41,"qtd":2},"JUNDIANEL":{"valor":466.77,"qtd":14},"VALFLUOR":{"valor":2789.26,"qtd":8},"VIALIX":{"valor":2473.02,"qtd":1},"CANADENSE":{"valor":8280.0,"qtd":1},"ALPHA METALI":{"valor":14350.0,"qtd":2},"GIFOR":{"valor":2086.44,"qtd":2},"GIMBA":{"valor":3302.07,"qtd":30},"METALINOX CO":{"valor":10858.29,"qtd":2},"QUADREM":{"valor":30376.47,"qtd":1},"JUNDIPAR":{"valor":1580.73,"qtd":3},"LACNAM":{"valor":100993.58,"qtd":3},"COPPI":{"valor":236.0,"qtd":1},"WL VEDAÇÕES3":{"valor":832.07,"qtd":10},"METAL NORTE":{"valor":6400.0,"qtd":2},"VERSATRONIC":{"valor":10000.0,"qtd":1},"ASCENDE LTDA":{"valor":6150.0,"qtd":1},"LOCALIZA MG2":{"valor":10655.7,"qtd":6},"VOAGE":{"valor":57467.65,"qtd":20},"VEIRANO ADV":{"valor":17042.4,"qtd":1},"MASTER SAFE":{"valor":8500.0,"qtd":1},"GLEZIO ROCHA":{"valor":5675.0,"qtd":1},"SO MARCAS":{"valor":2492.1,"qtd":1},"GAC REFORMA":{"valor":3770.0,"qtd":1},"R2 SAFETY":{"valor":2600.4,"qtd":4},"MAPDATA":{"valor":31912.59,"qtd":1},"RIO TEC":{"valor":5440.0,"qtd":1},"CRM INTELLIG":{"valor":76.19,"qtd":1},"APONTO":{"valor":500.0,"qtd":1},"Galv BH":{"valor":600.0,"qtd":1},"DISTRIB AGUA":{"valor":2790.0,"qtd":1},"SINGULAR":{"valor":1973.0,"qtd":1},"HIDROVARZEA":{"valor":2790.0,"qtd":1},"BSI":{"valor":997.65,"qtd":1},"GRAFICA VISA":{"valor":220.0,"qtd":1},"PLAM MARCENA":{"valor":8039.95,"qtd":2},"MBF":{"valor":11881.14,"qtd":2},"LABORMETRO":{"valor":580.0,"qtd":1},"Yelum Seguro":{"valor":179973.56,"qtd":1}},"compradores":{"beatriz":{"valor":88605.87,"qtd":48,"label":"Beatriz"},"tpereira":{"valor":2734571.9,"qtd":429,"label":"T. Pereira"},"cialves":{"valor":21239.81,"qtd":8,"label":"C. Alves"},"cristian":{"valor":10858.29,"qtd":2,"label":"Cristian"},"bruno":{"valor":446118.74,"qtd":82,"label":"Bruno"}},"atrasoMediana":1,"pctNoPrazo":49.9},"2026-08":{"valorTotal":61672355.19,"qtdPedidos":577,"valorNacional":61419612.96,"valorImportado":252742.23,"qtdNacional":506,"qtdImportado":71,"natureza":{"Serviço":{"valor":60130858.48,"qtd":99},"Compra":{"valor":1541496.71,"qtd":478}},"fornecedores":{"TIMOTEC":{"valor":267228.81,"qtd":88},"MAZATOOLS":{"valor":2541.4,"qtd":1},"4AS":{"valor":37143.15,"qtd":15},"PLASTERMO":{"valor":71809.34,"qtd":21},"MUNDIAL":{"valor":54684.0,"qtd":1},"JATI":{"valor":43218.73,"qtd":5},"COPPI":{"valor":2401.72,"qtd":2},"WL VEDAÇÕES3":{"valor":6032.92,"qtd":13},"TOKIO":{"valor":1705.59,"qtd":1},"TOTVS IBIRAP":{"valor":1675.6,"qtd":4},"GRAFICA VISA":{"valor":1020.0,"qtd":1},"MG3":{"valor":10673.99,"qtd":2},"TIMOTECH":{"valor":619424.98,"qtd":143},"RUSPRISTEEL1":{"valor":10184.96,"qtd":2},"GLOBAL JUN.1":{"valor":55274.74,"qtd":32},"KPMG":{"valor":60068.52,"qtd":1},"VIALIX":{"valor":1578.32,"qtd":1},"SMAGON1":{"valor":26000.0,"qtd":1},"4AG":{"valor":21143.77,"qtd":1},"Galv BH":{"valor":600.0,"qtd":1},"BRIZANTE":{"valor":9750.76,"qtd":18},"RIO TEC":{"valor":1262.4,"qtd":1},"JDUARTE":{"valor":10398.8,"qtd":2},"DEVELOP":{"valor":70672.77,"qtd":2},"CLAITON ROBE":{"valor":1050.0,"qtd":1},"JE VEDACOES":{"valor":181.5,"qtd":1},"VALFLUOR":{"valor":9435.64,"qtd":3},"CARBONO AM":{"valor":9560.0,"qtd":1},"REIS BATERIA":{"valor":1206.81,"qtd":1},"VEIRANO ADV":{"valor":6611.57,"qtd":1},"MESTRA VEDAB":{"valor":57.54,"qtd":2},"FIRE LESS":{"valor":95732.75,"qtd":4},"INSPESOLDA":{"valor":18000.0,"qtd":1},"CANADENSE":{"valor":4300.0,"qtd":1},"EMBRATEL":{"valor":16.89,"qtd":1},"GAC REFORMA":{"valor":6230.0,"qtd":1},"CENTER TOOLS":{"valor":29357.01,"qtd":18},"METALINOX CO":{"valor":97860.59,"qtd":10},"SERV AGUA":{"valor":3427.67,"qtd":5},"HIDROVARZEA":{"valor":2800.0,"qtd":1},"UNIPAR RANPA":{"valor":2894.71,"qtd":2},"4AC":{"valor":162186.06,"qtd":43},"1DG":{"valor":32269.26,"qtd":12},"INTENGE":{"valor":35136.0,"qtd":1},"TECFLUX":{"valor":950.41,"qtd":2},"Alametais Co":{"valor":2174.45,"qtd":1},"VOAGE":{"valor":31179.5,"qtd":11},"SO MARCAS":{"valor":16065.0,"qtd":4},"HCG EQUIP.":{"valor":2111.94,"qtd":1},"BRASIL EAD":{"valor":57.0,"qtd":1},"GLEZIO ROCHA":{"valor":11350.0,"qtd":1},"OTIMA ESTRA":{"valor":801.04,"qtd":1},"LOCALIZA MG2":{"valor":2797.88,"qtd":8},"MAXXIMA":{"valor":390.0,"qtd":1},"SINGULAR":{"valor":1143.0,"qtd":1},"JOTEC SOLUÇ":{"valor":4540.0,"qtd":3},"LABORMETRO":{"valor":3029.05,"qtd":4},"JUNDIANEL":{"valor":182.47,"qtd":4},"FTM MECÂNICA":{"valor":17260.0,"qtd":9},"Leal, Cotrim":{"valor":160000.0,"qtd":1},"IBPG":{"valor":12757.0,"qtd":2},"IBAMA":{"valor":1000.0,"qtd":1},"ABIMAQ":{"valor":1850.0,"qtd":1},"SUPERFITAS":{"valor":3955.0,"qtd":1},"MATHEUS DEFI":{"valor":1600.0,"qtd":1},"GS CORRENTES":{"valor":2040.0,"qtd":2},"ASCENDE LTDA":{"valor":250.0,"qtd":1},"CAVALCANTE":{"valor":59376003.54,"qtd":2},"VIKLA":{"valor":2165.84,"qtd":2},"SIGMA 3D":{"valor":19918.97,"qtd":2},"ANHANGUERA 2":{"valor":546.72,"qtd":1},"ICI UNIFORME":{"valor":13663.68,"qtd":2},"JS TINTAS":{"valor":2675.2,"qtd":10},"PLAM MARCENA":{"valor":1911.0,"qtd":1},"SYSTEM SEAL":{"valor":4242.24,"qtd":5},"MCE VEDAÇÕES":{"valor":5589.78,"qtd":2},"METRA":{"valor":2695.0,"qtd":1},"W7 PROMO":{"valor":348.3,"qtd":1},"GLOBAL DIS":{"valor":10050.0,"qtd":5},"ANGEROL":{"valor":450.0,"qtd":1},"BRAMA":{"valor":2594.79,"qtd":4},"Dell Computa":{"valor":22126.87,"qtd":1},"DELL PR":{"valor":4299.19,"qtd":1},"FEDEX":{"valor":9677.94,"qtd":1},"HSR TECH":{"valor":4500.0,"qtd":1},"CRM INTELLIG":{"valor":114.6,"qtd":1},"SERGIO FARIA":{"valor":6336.0,"qtd":1},"BT":{"valor":152.54,"qtd":1}},"compradores":{"bruno":{"valor":61217998.75,"qtd":458,"label":"Bruno"},"tpereira":{"valor":434454.19,"qtd":113,"label":"T. Pereira"},"cristian":{"valor":19902.24,"qtd":6,"label":"Cristian"}},"atrasoMediana":-15,"pctNoPrazo":70.7}},"Nacional":{"Todos":{"valorTotal":81325605.13,"qtdPedidos":3326,"valorNacional":81325605.13,"valorImportado":0.0,"qtdNacional":3326,"qtdImportado":0,"natureza":{"Compra":{"valor":9451526.25,"qtd":2522},"Serviço":{"valor":71873711.88,"qtd":803},"Beneficiamento":{"valor":367.0,"qtd":1}},"fornecedores":{"OTIMA ESTRA":{"valor":125114.02,"qtd":8},"FLASH":{"valor":800.0,"qtd":1},"PLASTERMO":{"valor":283344.55,"qtd":103},"TIMOTEC":{"valor":2225309.31,"qtd":500},"VALFLUOR":{"valor":56690.63,"qtd":58},"BRIZANTE":{"valor":112942.72,"qtd":207},"TOTVS IBIRAP":{"valor":290903.24,"qtd":28},"LAVAPANO LTD":{"valor":13426.8,"qtd":1},"CREA":{"valor":5129.95,"qtd":1},"MG3":{"valor":34759.83,"qtd":15},"GS CORRENTES":{"valor":9586.0,"qtd":9},"VEIRANO ADV":{"valor":210187.81,"qtd":20},"NORD-LOCK":{"valor":45583.49,"qtd":3},"LACNAM":{"valor":332895.2,"qtd":15},"PRINER":{"valor":3370.0,"qtd":5},"POLGAS DISTR":{"valor":2125.45,"qtd":3},"ALPHA METALI":{"valor":48475.0,"qtd":7},"MESTRA VEDAB":{"valor":21246.32,"qtd":89},"TELEFONICA":{"valor":57160.68,"qtd":22},"LOCALIZA MG2":{"valor":1920099.67,"qtd":59},"DELL COMP":{"valor":105758.42,"qtd":5},"DELL PR":{"valor":21294.34,"qtd":5},"RECONTECH":{"valor":99978.25,"qtd":3},"PROCUREMENT":{"valor":856.0,"qtd":2},"JUNDIANEL":{"valor":2768.43,"qtd":48},"GLOBAL JUN.1":{"valor":213330.72,"qtd":151},"HIDROVARZEA":{"valor":24790.0,"qtd":3},"FSA QUALITY":{"valor":4260.0,"qtd":1},"EINSTEIN V":{"valor":5223.74,"qtd":1},"JUMAR":{"valor":18000.0,"qtd":1},"VIALIX":{"valor":28021.96,"qtd":9},"NEXT":{"valor":10740.0,"qtd":1},"ED SILVA E N":{"valor":17653.3,"qtd":3},"PB IMBETIBA":{"valor":105000.0,"qtd":2},"RONALDO CORR":{"valor":148140.37,"qtd":90},"J S ENGENHAR":{"valor":500.0,"qtd":2},"TERA":{"valor":24330.24,"qtd":2},"PRO SOLUTION":{"valor":315766.41,"qtd":5},"BDO RCS 2":{"valor":190556.0,"qtd":5},"PLAM MARCENA":{"valor":17102.05,"qtd":8},"PAMAG":{"valor":9615.4,"qtd":8},"JOTEC SOLUÇ":{"valor":39067.0,"qtd":16},"COPPI":{"valor":20343.34,"qtd":13},"Correio":{"valor":3600.0,"qtd":1},"GLEZIO ROCHA":{"valor":165388.6,"qtd":7},"GRUPO MCV":{"valor":6000.0,"qtd":2},"GOTO":{"valor":4800.0,"qtd":2},"KPMG":{"valor":190068.52,"qtd":2},"LACLAW":{"valor":5400.0,"qtd":1},"LELLO":{"valor":126000.0,"qtd":2},"LEVYCAM":{"valor":22000.0,"qtd":2},"METRA":{"valor":312582.04,"qtd":4},"ONFLY":{"valor":6480.0,"qtd":2},"OPTFIBER":{"valor":32520.0,"qtd":5},"CRM INTELLIG":{"valor":353224.66,"qtd":6},"SERASA S.A":{"valor":72000.0,"qtd":1},"TOTVS S.A":{"valor":380980.0,"qtd":11},"WELLHUB":{"valor":32400.0,"qtd":1},"CLARO MATRIZ":{"valor":28083.99,"qtd":14},"TICKET ACCOR":{"valor":720000.0,"qtd":1},"FIRE LESS":{"valor":229918.35,"qtd":12},"WHITE METAL":{"valor":16952.0,"qtd":1},"ITALBRONZE":{"valor":62073.66,"qtd":4},"MAZATOOLS":{"valor":8385.18,"qtd":3},"BT":{"valor":27117.62,"qtd":30},"SORIDRAULICA":{"valor":5200.0,"qtd":2},"HIMEC EQUIPA":{"valor":3260.0,"qtd":2},"SO MARCAS":{"valor":28379.44,"qtd":14},"REIS OFFICE":{"valor":22500.0,"qtd":1},"VERTO":{"valor":284445.0,"qtd":1},"PREVINSA":{"valor":3500.0,"qtd":1},"MASTER SAFE":{"valor":37700.0,"qtd":4},"GAC REFORMA":{"valor":35880.0,"qtd":11},"CLAITON ROBE":{"valor":48650.0,"qtd":4},"IBPG":{"valor":100957.0,"qtd":3},"GIMBA":{"valor":20242.89,"qtd":186},"WL VEDAÇÕES3":{"valor":7670.28,"qtd":35},"CAJU":{"valor":253768.27,"qtd":16},"CREA RJ":{"valor":2665.36,"qtd":1},"TOKIO":{"valor":49086.99,"qtd":9},"R2 SAFETY":{"valor":18376.16,"qtd":28},"JAPI PRINTER":{"valor":9730.0,"qtd":4},"FTM MECÂNICA":{"valor":30510.0,"qtd":14},"GRAFICA VISA":{"valor":5348.0,"qtd":7},"TOTVS SP":{"valor":17259.0,"qtd":1},"PORTO":{"valor":32650.4,"qtd":3},"BEST HOMEN":{"valor":590.0,"qtd":1},"GREENLEGIS":{"valor":9576.0,"qtd":2},"IBAMA":{"valor":10274.76,"qtd":2},"SERV AGUA":{"valor":10777.67,"qtd":20},"TESTEFER":{"valor":134.0,"qtd":1},"HISERV":{"valor":3240.0,"qtd":2},"METALINOX CO":{"valor":153236.81,"qtd":18},"PRESTAMPA":{"valor":5601.32,"qtd":2},"RIO TEC":{"valor":14517.02,"qtd":8},"TIMOTECH":{"valor":2841420.4,"qtd":553},"CANADENSE":{"valor":16560.0,"qtd":3},"CLARUS":{"valor":2447.9,"qtd":1},"NAG ABRASIVO":{"valor":8990.6,"qtd":2},"HONTECH":{"valor":10934.53,"qtd":2},"JATI":{"valor":87083.57,"qtd":7},"FALCONERY":{"valor":45295.0,"qtd":5},"TECNOVIC":{"valor":1033.0,"qtd":2},"VISION":{"valor":417603.98,"qtd":45},"FEDEX":{"valor":21416.29,"qtd":2},"ICI UNIFORME":{"valor":20030.38,"qtd":4},"ELETRIZEL":{"valor":8746.67,"qtd":37},"AÇOS FAVORIT":{"valor":100702.74,"qtd":4},"REMNO":{"valor":63419.76,"qtd":8},"LUCIMEIRE":{"valor":217.0,"qtd":2},"POROFIL":{"valor":9076.8,"qtd":4},"MCE VEDAÇÕES":{"valor":27347.06,"qtd":8},"SYSTEM SEAL":{"valor":10132.24,"qtd":12},"RISE":{"valor":22500.0,"qtd":1},"SINGULAR":{"valor":17303.0,"qtd":19},"Barcarol":{"valor":7695.0,"qtd":1},"BUFFET NADYR":{"valor":28300.0,"qtd":1},"ODONTOPREV S":{"valor":84165.55,"qtd":28},"BRADESCO":{"valor":3848300.0,"qtd":30},"ICATU SEGURO":{"valor":68447.04,"qtd":24},"WE4YOU":{"valor":11880.0,"qtd":1},"MTCA":{"valor":7613.2,"qtd":2},"GLOBAL DIS":{"valor":26439.9,"qtd":19},"ABIMAQ":{"valor":3700.0,"qtd":2},"JPL MOTORES":{"valor":5548.4,"qtd":1},"HILTI DO BRA":{"valor":3363.89,"qtd":3},"VIAÇÃO VICEN":{"valor":16000.0,"qtd":1},"L.P.TRANSPOR":{"valor":14400.0,"qtd":1},"BRAMA":{"valor":8615.55,"qtd":29},"CONEXÃO SJC":{"valor":1659.99,"qtd":2},"SV EVENTOS":{"valor":12900.0,"qtd":1},"Cascadura R":{"valor":58480.0,"qtd":3},"HIDRACON":{"valor":4716.72,"qtd":1},"AMPCO METAL":{"valor":7865.0,"qtd":1},"JUNDIPAR":{"valor":2860.74,"qtd":43},"UNICA INST":{"valor":145200.0,"qtd":7},"ASCENDE LTDA":{"valor":9850.0,"qtd":7},"WEST GROUP":{"valor":4944.0,"qtd":3},"LABORMETRO":{"valor":20359.74,"qtd":7},"MATHEUS DEFI":{"valor":5319.06,"qtd":3},"REFIT SOLUÇO":{"valor":13110.37,"qtd":5},"QUALITY RGM":{"valor":369258.68,"qtd":3},"MAGETECH":{"valor":3980.0,"qtd":2},"QUADREM":{"valor":91961.25,"qtd":3},"Ale Matteo":{"valor":7600.0,"qtd":1},"VULKAN":{"valor":66004.0,"qtd":1},"MBF":{"valor":24461.14,"qtd":3},"REVO FERRAME":{"valor":9674.25,"qtd":8},"EMERSON FA":{"valor":3384.0,"qtd":1},"JPM":{"valor":2500.0,"qtd":1},"SONED":{"valor":58194.93,"qtd":8},"CS QUALIDADE":{"valor":4387.5,"qtd":8},"ALAMO ENG":{"valor":36902.5,"qtd":3},"UNIPAR RANPA":{"valor":8069.04,"qtd":6},"TECFLUX":{"valor":5707.42,"qtd":3},"JDUARTE":{"valor":13398.8,"qtd":3},"WORKPLACE":{"valor":1800.0,"qtd":2},"GUARDINHA":{"valor":86400.0,"qtd":2},"VOAGE":{"valor":263237.7,"qtd":72},"REDEPETRO":{"valor":1872.0,"qtd":1},"ANHANGUERA 2":{"valor":1455.62,"qtd":4},"STEEL MESH":{"valor":3170.0,"qtd":1},"SmartGrid":{"valor":6000.0,"qtd":1},"CTJ OIL & GA":{"valor":720.0,"qtd":1},"ENVELOPLAS":{"valor":2780.0,"qtd":3},"ACTION":{"valor":3132.6,"qtd":1},"BRASIL EAD":{"valor":570.0,"qtd":5},"ARAPONGAS":{"valor":162188.85,"qtd":1},"Galv BH":{"valor":2250.0,"qtd":4},"GONTERMANN":{"valor":56228.17,"qtd":2},"ADESIL":{"valor":3634.5,"qtd":3},"FAST FEIRAS":{"valor":32000.0,"qtd":1},"INFORMA":{"valor":43955.0,"qtd":1},"MOGI":{"valor":6726.5,"qtd":7},"PREF CAJAMAR":{"valor":22447.12,"qtd":2},"ECONET":{"valor":700.0,"qtd":2},"CENTER TOOLS":{"valor":30925.01,"qtd":22},"NHJ DO BRASI":{"valor":34231.9,"qtd":4},"VES-T UNIFOR":{"valor":26496.0,"qtd":8},"Fort Soluçõe":{"valor":21780.79,"qtd":1},"CASCADURA SP":{"valor":39940.0,"qtd":1},"PIONEIRA":{"valor":1684.17,"qtd":1},"FABIA VITORI":{"valor":12000.0,"qtd":1},"RICO SAFETY":{"valor":4852.25,"qtd":5},"NEW EXPO":{"valor":1680.0,"qtd":1},"MAKITA VEDA":{"valor":3413.76,"qtd":3},"SINDGRAF":{"valor":13980.0,"qtd":4},"BSI":{"valor":20126.31,"qtd":4},"ANGEROL":{"valor":10430.0,"qtd":3},"FENAC":{"valor":2137.28,"qtd":8},"CARBONO AM":{"valor":10520.0,"qtd":2},"EXTINGOLD":{"valor":3547.0,"qtd":1},"ACE":{"valor":5977.87,"qtd":1},"DENKENTECH":{"valor":567.05,"qtd":2},"Wyasheslav R":{"valor":4000.0,"qtd":1},"ALLIANZ SEG":{"valor":6331.11,"qtd":1},"MATRIZPEL":{"valor":9480.66,"qtd":2},"EMPILHANOBRE":{"valor":11746.0,"qtd":1},"APONTO":{"valor":4250.0,"qtd":3},"IMPÉRIO DO M":{"valor":8915.2,"qtd":3},"JS TINTAS":{"valor":8767.2,"qtd":18},"AXA SEGUROS":{"valor":125039.88,"qtd":2},"SODEXO SP":{"valor":407.52,"qtd":4},"MKS REDUTORE":{"valor":689.0,"qtd":3},"ZIRTEC":{"valor":8954.87,"qtd":1},"BS SANEAMENT":{"valor":3260.0,"qtd":1},"CORR SOLUTIO":{"valor":2498.34,"qtd":2},"SCAN 2":{"valor":4993.0,"qtd":1},"HUSSEIN":{"valor":2341.62,"qtd":2},"CARMELO":{"valor":10465.0,"qtd":1},"LUCIANA F. B":{"valor":1000.0,"qtd":1},"PORTO SEGURO":{"valor":4205.61,"qtd":1},"GIFOR":{"valor":2086.44,"qtd":2},"METAL NORTE":{"valor":6400.0,"qtd":2},"VERSATRONIC":{"valor":10000.0,"qtd":1},"MAPDATA":{"valor":31912.59,"qtd":1},"DISTRIB AGUA":{"valor":2790.0,"qtd":1},"Yelum Seguro":{"valor":179973.56,"qtd":1},"MUNDIAL":{"valor":54684.0,"qtd":1},"RUSPRISTEEL1":{"valor":10184.96,"qtd":2},"SMAGON1":{"valor":26000.0,"qtd":1},"DEVELOP":{"valor":70672.77,"qtd":2},"JE VEDACOES":{"valor":181.5,"qtd":1},"REIS BATERIA":{"valor":1206.81,"qtd":1},"INSPESOLDA":{"valor":18000.0,"qtd":1},"EMBRATEL":{"valor":16.89,"qtd":1},"INTENGE":{"valor":35136.0,"qtd":1},"Alametais Co":{"valor":2174.45,"qtd":1},"HCG EQUIP.":{"valor":2111.94,"qtd":1},"MAXXIMA":{"valor":390.0,"qtd":1},"Leal, Cotrim":{"valor":160000.0,"qtd":1},"SUPERFITAS":{"valor":3955.0,"qtd":1},"CAVALCANTE":{"valor":59376003.54,"qtd":2},"VIKLA":{"valor":2165.84,"qtd":2},"SIGMA 3D":{"valor":19918.97,"qtd":2},"W7 PROMO":{"valor":348.3,"qtd":1},"Dell Computa":{"valor":22126.87,"qtd":1},"HSR TECH":{"valor":4500.0,"qtd":1},"SERGIO FARIA":{"valor":6336.0,"qtd":1}},"compradores":{"cristian":{"valor":2721458.7,"qtd":107,"label":"Cristian"},"tpereira":{"valor":1740567.92,"qtd":352,"label":"T. Pereira"},"beatriz":{"valor":15138986.7,"qtd":2307,"label":"Beatriz"},"jribeiro":{"valor":39234.5,"qtd":12,"label":"J. Ribeiro"},"cialves":{"valor":21239.81,"qtd":8,"label":"C. Alves"},"bruno":{"valor":61664117.49,"qtd":540,"label":"Bruno"}},"atrasoMediana":2.0,"pctNoPrazo":42.1},"2026-01":{"valorTotal":6801843.29,"qtdPedidos":425,"valorNacional":6801843.29,"valorImportado":0.0,"qtdNacional":425,"qtdImportado":0,"natureza":{"Compra":{"valor":2982597.12,"qtd":284},"Serviço":{"valor":3818879.17,"qtd":140},"Beneficiamento":{"valor":367.0,"qtd":1}},"fornecedores":{"OTIMA ESTRA":{"valor":79200.0,"qtd":1},"FLASH":{"valor":800.0,"qtd":1},"PLASTERMO":{"valor":35149.45,"qtd":14},"TIMOTEC":{"valor":504282.81,"qtd":83},"VALFLUOR":{"valor":21327.0,"qtd":20},"BRIZANTE":{"valor":12076.4,"qtd":24},"TOTVS IBIRAP":{"valor":36780.68,"qtd":4},"LAVAPANO LTD":{"valor":13426.8,"qtd":1},"CREA":{"valor":5129.95,"qtd":1},"MG3":{"valor":3643.69,"qtd":2},"GS CORRENTES":{"valor":5548.0,"qtd":4},"VEIRANO ADV":{"valor":55805.88,"qtd":12},"NORD-LOCK":{"valor":45583.49,"qtd":3},"LACNAM":{"valor":96838.21,"qtd":4},"PRINER":{"valor":812.0,"qtd":2},"POLGAS DISTR":{"valor":948.4,"qtd":1},"ALPHA METALI":{"valor":22880.0,"qtd":3},"MESTRA VEDAB":{"valor":55.04,"qtd":4},"TELEFONICA":{"valor":57160.68,"qtd":22},"LOCALIZA MG2":{"valor":1870234.38,"qtd":13},"DELL COMP":{"valor":10694.85,"qtd":1},"DELL PR":{"valor":1499.22,"qtd":1},"RECONTECH":{"valor":86725.22,"qtd":2},"PROCUREMENT":{"valor":642.0,"qtd":1},"JUNDIANEL":{"valor":247.88,"qtd":6},"GLOBAL JUN.1":{"valor":3953.05,"qtd":7},"HIDROVARZEA":{"valor":19200.0,"qtd":1},"FSA QUALITY":{"valor":4260.0,"qtd":1},"EINSTEIN V":{"valor":5223.74,"qtd":1},"JUMAR":{"valor":18000.0,"qtd":1},"VIALIX":{"valor":6209.47,"qtd":1},"NEXT":{"valor":10740.0,"qtd":1},"ED SILVA E N":{"valor":3000.0,"qtd":1},"PB IMBETIBA":{"valor":60000.0,"qtd":1},"RONALDO CORR":{"valor":45351.7,"qtd":19},"J S ENGENHAR":{"valor":100.0,"qtd":1},"TERA":{"valor":24330.24,"qtd":2},"PRO SOLUTION":{"valor":315766.41,"qtd":5},"BDO RCS 2":{"valor":190144.35,"qtd":3},"PLAM MARCENA":{"valor":5698.5,"qtd":4},"PAMAG":{"valor":2432.5,"qtd":1},"JOTEC SOLUÇ":{"valor":16707.0,"qtd":5},"COPPI":{"valor":2205.92,"qtd":2},"Correio":{"valor":3600.0,"qtd":1},"GLEZIO ROCHA":{"valor":135887.29,"qtd":2},"GRUPO MCV":{"valor":6000.0,"qtd":2},"GOTO":{"valor":4800.0,"qtd":2},"KPMG":{"valor":130000.0,"qtd":1},"LACLAW":{"valor":5400.0,"qtd":1},"LELLO":{"valor":126000.0,"qtd":2},"LEVYCAM":{"valor":22000.0,"qtd":2},"METRA":{"valor":305090.04,"qtd":1},"ONFLY":{"valor":6480.0,"qtd":2},"OPTFIBER":{"valor":32520.0,"qtd":5},"CRM INTELLIG":{"valor":265000.0,"qtd":2},"SERASA S.A":{"valor":72000.0,"qtd":1},"TOTVS S.A":{"valor":294580.0,"qtd":8},"WELLHUB":{"valor":32400.0,"qtd":1},"CLARO MATRIZ":{"valor":28083.99,"qtd":14},"TICKET ACCOR":{"valor":720000.0,"qtd":1},"FIRE LESS":{"valor":49538.05,"qtd":4},"WHITE METAL":{"valor":16952.0,"qtd":1},"ITALBRONZE":{"valor":44170.31,"qtd":2},"MAZATOOLS":{"valor":1618.0,"qtd":1},"BT":{"valor":10685.47,"qtd":9},"SORIDRAULICA":{"valor":3300.0,"qtd":1},"HIMEC EQUIPA":{"valor":3260.0,"qtd":2},"SO MARCAS":{"valor":2679.0,"qtd":3},"REIS OFFICE":{"valor":22500.0,"qtd":1},"VERTO":{"valor":284445.0,"qtd":1},"PREVINSA":{"valor":3500.0,"qtd":1},"MASTER SAFE":{"valor":6850.0,"qtd":1},"GAC REFORMA":{"valor":900.0,"qtd":1},"CLAITON ROBE":{"valor":47600.0,"qtd":3},"IBPG":{"valor":88200.0,"qtd":1},"GIMBA":{"valor":3611.89,"qtd":28},"WL VEDAÇÕES3":{"valor":36.0,"qtd":1},"CAJU":{"valor":253768.27,"qtd":16},"CREA RJ":{"valor":2665.36,"qtd":1},"TOKIO":{"valor":32846.64,"qtd":2},"R2 SAFETY":{"valor":2687.08,"qtd":4},"JAPI PRINTER":{"valor":7000.0,"qtd":3},"FTM MECÂNICA":{"valor":4125.0,"qtd":1},"GRAFICA VISA":{"valor":990.0,"qtd":1},"TOTVS SP":{"valor":17259.0,"qtd":1}},"compradores":{"cristian":{"valor":2685981.46,"qtd":98,"label":"Cristian"},"tpereira":{"valor":948.4,"qtd":1,"label":"T. Pereira"},"beatriz":{"valor":4097282.54,"qtd":316,"label":"Beatriz"},"jribeiro":{"valor":17630.9,"qtd":10,"label":"J. Ribeiro"}},"atrasoMediana":10,"pctNoPrazo":22.1},"2026-02":{"valorTotal":5652495.16,"qtdPedidos":442,"valorNacional":5652495.16,"valorImportado":0.0,"qtdNacional":442,"qtdImportado":0,"natureza":{"Serviço":{"valor":4511171.53,"qtd":144},"Compra":{"valor":1141323.63,"qtd":298}},"fornecedores":{"PORTO":{"valor":30910.84,"qtd":2},"ED SILVA E N":{"valor":14653.3,"qtd":2},"BEST HOMEN":{"valor":590.0,"qtd":1},"GREENLEGIS":{"valor":9576.0,"qtd":2},"GLOBAL JUN.1":{"valor":23849.65,"qtd":15},"WL VEDAÇÕES3":{"valor":347.2,"qtd":9},"IBAMA":{"valor":9274.76,"qtd":1},"JUNDIANEL":{"valor":285.95,"qtd":5},"BRIZANTE":{"valor":10628.96,"qtd":11},"SERV AGUA":{"valor":900.0,"qtd":3},"GIMBA":{"valor":4303.33,"qtd":46},"VALFLUOR":{"valor":13922.4,"qtd":10},"TESTEFER":{"valor":134.0,"qtd":1},"TIMOTEC":{"valor":447813.45,"qtd":39},"TOTVS S.A":{"valor":86400.0,"qtd":3},"HISERV":{"valor":3240.0,"qtd":2},"METALINOX CO":{"valor":29372.97,"qtd":3},"PRESTAMPA":{"valor":2801.16,"qtd":1},"RIO TEC":{"valor":1450.0,"qtd":1},"TOKIO":{"valor":3083.52,"qtd":1},"BDO RCS 2":{"valor":411.65,"qtd":2},"TOTVS IBIRAP":{"valor":21513.14,"qtd":4},"TIMOTECH":{"valor":90237.76,"qtd":41},"CANADENSE":{"valor":3980.0,"qtd":1},"GLEZIO ROCHA":{"valor":2206.31,"qtd":1},"CLARUS":{"valor":2447.9,"qtd":1},"NAG ABRASIVO":{"valor":3460.0,"qtd":1},"HONTECH":{"valor":5721.4,"qtd":1},"VIALIX":{"valor":1448.83,"qtd":1},"JATI":{"valor":43864.84,"qtd":2},"R2 SAFETY":{"valor":2687.08,"qtd":4},"CRM INTELLIG":{"valor":87931.17,"qtd":1},"FALCONERY":{"valor":28928.0,"qtd":3},"TECNOVIC":{"valor":1033.0,"qtd":2},"VISION":{"valor":277839.73,"qtd":43},"FEDEX":{"valor":11738.35,"qtd":1},"ICI UNIFORME":{"valor":4726.7,"qtd":1},"ELETRIZEL":{"valor":6600.64,"qtd":18},"AÇOS FAVORIT":{"valor":70282.71,"qtd":2},"REMNO":{"valor":24686.0,"qtd":3},"LUCIMEIRE":{"valor":104.0,"qtd":1},"PLASTERMO":{"valor":4354.88,"qtd":3},"POROFIL":{"valor":892.8,"qtd":1},"MCE VEDAÇÕES":{"valor":156.8,"qtd":1},"SYSTEM SEAL":{"valor":3390.0,"qtd":3},"VEIRANO ADV":{"valor":25614.58,"qtd":2},"RISE":{"valor":22500.0,"qtd":1},"MESTRA VEDAB":{"valor":4987.6,"qtd":5},"SINGULAR":{"valor":1152.0,"qtd":1},"Barcarol":{"valor":7695.0,"qtd":1},"JAPI PRINTER":{"valor":2730.0,"qtd":1},"BUFFET NADYR":{"valor":28300.0,"qtd":1},"LOCALIZA MG2":{"valor":4956.44,"qtd":5},"GAC REFORMA":{"valor":5300.0,"qtd":2},"JOTEC SOLUÇ":{"valor":4740.0,"qtd":2},"ODONTOPREV S":{"valor":84165.55,"qtd":28},"BRADESCO":{"valor":3848300.0,"qtd":30},"ICATU SEGURO":{"valor":68447.04,"qtd":24},"WE4YOU":{"valor":11880.0,"qtd":1},"RONALDO CORR":{"valor":9729.7,"qtd":12},"SO MARCAS":{"valor":6489.9,"qtd":5},"MTCA":{"valor":7200.0,"qtd":1},"DELL COMP":{"valor":20290.97,"qtd":1},"DELL PR":{"valor":3568.25,"qtd":1},"GLOBAL DIS":{"valor":11364.9,"qtd":9},"ABIMAQ":{"valor":1850.0,"qtd":1},"JPL MOTORES":{"valor":5548.4,"qtd":1},"LACNAM":{"valor":49964.0,"qtd":1},"HILTI DO BRA":{"valor":3363.89,"qtd":3},"BT":{"valor":167.75,"qtd":1},"PRINER":{"valor":2008.0,"qtd":1},"VIAÇÃO VICEN":{"valor":16000.0,"qtd":1}},"compradores":{"beatriz":{"valor":5652495.16,"qtd":442,"label":"Beatriz"}},"atrasoMediana":4.0,"pctNoPrazo":18.3},"2026-03":{"valorTotal":1953771.43,"qtdPedidos":380,"valorNacional":1953771.43,"valorImportado":0.0,"qtdNacional":380,"qtdImportado":0,"natureza":{"Serviço":{"valor":957103.29,"qtd":81},"Compra":{"valor":996668.14,"qtd":299}},"fornecedores":{"FTM MECÂNICA":{"valor":4125.0,"qtd":1},"L.P.TRANSPOR":{"valor":14400.0,"qtd":1},"BRAMA":{"valor":6020.75,"qtd":25},"CONEXÃO SJC":{"valor":1659.99,"qtd":2},"GAC REFORMA":{"valor":10450.0,"qtd":1},"TIMOTEC":{"valor":382065.11,"qtd":69},"TIMOTECH":{"valor":354764.58,"qtd":72},"SV EVENTOS":{"valor":12900.0,"qtd":1},"ITALBRONZE":{"valor":17903.35,"qtd":2},"Cascadura R":{"valor":42510.0,"qtd":2},"MAZATOOLS":{"valor":4225.78,"qtd":1},"PLASTERMO":{"valor":18277.76,"qtd":12},"HIDRACON":{"valor":4716.72,"qtd":1},"BRIZANTE":{"valor":16273.6,"qtd":31},"AMPCO METAL":{"valor":7865.0,"qtd":1},"JUNDIPAR":{"valor":555.0,"qtd":2},"GLOBAL JUN.1":{"valor":19863.4,"qtd":17},"JUNDIANEL":{"valor":1071.65,"qtd":10},"VALFLUOR":{"valor":980.0,"qtd":4},"MESTRA VEDAB":{"valor":328.14,"qtd":4},"GS CORRENTES":{"valor":1998.0,"qtd":3},"BT":{"valor":945.0,"qtd":1},"VIALIX":{"valor":6416.6,"qtd":2},"TOKIO":{"valor":6041.96,"qtd":2},"TOTVS IBIRAP":{"valor":4909.7,"qtd":2},"UNICA INST":{"valor":145200.0,"qtd":7},"SINGULAR":{"valor":1016.0,"qtd":1},"ASCENDE LTDA":{"valor":950.0,"qtd":2},"WEST GROUP":{"valor":57.0,"qtd":1},"LABORMETRO":{"valor":1015.33,"qtd":1},"SERV AGUA":{"valor":2710.0,"qtd":3},"MATHEUS DEFI":{"valor":3719.06,"qtd":2},"AÇOS FAVORIT":{"valor":19443.99,"qtd":1},"REFIT SOLUÇO":{"valor":2118.63,"qtd":1},"QUALITY RGM":{"valor":187070.54,"qtd":1},"MAGETECH":{"valor":3980.0,"qtd":2},"QUADREM":{"valor":47185.86,"qtd":1},"Ale Matteo":{"valor":7600.0,"qtd":1},"GRAFICA VISA":{"valor":1808.0,"qtd":1},"MG3":{"valor":99.12,"qtd":1},"LACNAM":{"valor":34901.14,"qtd":3},"ICI UNIFORME":{"valor":1640.0,"qtd":1},"RIO TEC":{"valor":1364.62,"qtd":3},"PAMAG":{"valor":2490.4,"qtd":5},"METRA":{"valor":1341.0,"qtd":1},"REMNO":{"valor":13883.76,"qtd":1},"WL VEDAÇÕES3":{"valor":362.1,"qtd":1},"FIRE LESS":{"valor":56520.4,"qtd":2},"COPPI":{"valor":2282.26,"qtd":2},"VEIRANO ADV":{"valor":28521.58,"qtd":2},"VULKAN":{"valor":66004.0,"qtd":1},"MBF":{"valor":12580.0,"qtd":1},"REVO FERRAME":{"valor":9674.25,"qtd":8},"EMERSON FA":{"valor":3384.0,"qtd":1},"LOCALIZA MG2":{"valor":5429.79,"qtd":7},"OTIMA ESTRA":{"valor":1022.05,"qtd":1},"GIMBA":{"valor":4030.15,"qtd":23},"JPM":{"valor":2500.0,"qtd":1},"VISION":{"valor":139764.24,"qtd":2},"SONED":{"valor":51300.0,"qtd":1},"JOTEC SOLUÇ":{"valor":1268.0,"qtd":1},"CS QUALIDADE":{"valor":1912.5,"qtd":1},"ALAMO ENG":{"valor":36902.5,"qtd":3},"UNIPAR RANPA":{"valor":2925.46,"qtd":3},"TECFLUX":{"valor":4757.02,"qtd":1},"NAG ABRASIVO":{"valor":5530.6,"qtd":1},"JDUARTE":{"valor":3000.0,"qtd":1},"WORKPLACE":{"valor":900.0,"qtd":1},"GUARDINHA":{"valor":86400.0,"qtd":2},"POLGAS DISTR":{"valor":1177.05,"qtd":2},"VOAGE":{"valor":2889.93,"qtd":1},"REDEPETRO":{"valor":1872.0,"qtd":1}},"compradores":{"beatriz":{"valor":1932846.71,"qtd":377,"label":"Beatriz"},"jribeiro":{"valor":14400.0,"qtd":1,"label":"J. Ribeiro"},"cristian":{"valor":4716.72,"qtd":1,"label":"Cristian"},"tpereira":{"valor":1808.0,"qtd":1,"label":"T. Pereira"}},"atrasoMediana":6.0,"pctNoPrazo":31.1},"2026-04":{"valorTotal":1142812.98,"qtdPedidos":315,"valorNacional":1142812.98,"valorImportado":0.0,"qtdNacional":315,"qtdImportado":0,"natureza":{"Serviço":{"valor":690689.08,"qtd":99},"Compra":{"valor":452123.9,"qtd":216}},"fornecedores":{"PAMAG":{"valor":4692.5,"qtd":2},"BRIZANTE":{"valor":7356.3,"qtd":16},"VALFLUOR":{"valor":2472.4,"qtd":5},"JUNDIANEL":{"valor":513.72,"qtd":9},"MESTRA VEDAB":{"valor":6825.68,"qtd":25},"GLOBAL JUN.1":{"valor":37447.48,"qtd":20},"LACNAM":{"valor":25462.05,"qtd":2},"TIMOTECH":{"valor":325825.56,"qtd":72},"MCE VEDAÇÕES":{"valor":21600.48,"qtd":5},"TIMOTEC":{"valor":122214.68,"qtd":29},"ANHANGUERA 2":{"valor":908.9,"qtd":3},"SERV AGUA":{"valor":1450.0,"qtd":4},"STEEL MESH":{"valor":3170.0,"qtd":1},"SmartGrid":{"valor":6000.0,"qtd":1},"POROFIL":{"valor":7440.0,"qtd":2},"COPPI":{"valor":10172.44,"qtd":4},"R2 SAFETY":{"valor":2687.08,"qtd":4},"JOTEC SOLUÇ":{"valor":8532.0,"qtd":4},"QUALITY RGM":{"valor":36836.62,"qtd":1},"OTIMA ESTRA":{"valor":13200.0,"qtd":1},"VOAGE":{"valor":9841.65,"qtd":4},"WORKPLACE":{"valor":900.0,"qtd":1},"RONALDO CORR":{"valor":42446.0,"qtd":16},"LABORMETRO":{"valor":15735.36,"qtd":1},"VIALIX":{"valor":1986.93,"qtd":1},"CTJ OIL & GA":{"valor":720.0,"qtd":1},"GAC REFORMA":{"valor":2700.0,"qtd":2},"ENVELOPLAS":{"valor":2780.0,"qtd":3},"ACTION":{"valor":3132.6,"qtd":1},"BRASIL EAD":{"valor":285.0,"qtd":3},"ASCENDE LTDA":{"valor":500.0,"qtd":1},"SINGULAR":{"valor":2491.0,"qtd":1},"SO MARCAS":{"valor":653.45,"qtd":1},"ARAPONGAS":{"valor":162188.85,"qtd":1},"Galv BH":{"valor":1050.0,"qtd":2},"GONTERMANN":{"valor":56099.01,"qtd":1},"ADESIL":{"valor":3634.5,"qtd":3},"PORTO":{"valor":1739.56,"qtd":1},"FAST FEIRAS":{"valor":32000.0,"qtd":1},"INFORMA":{"valor":43955.0,"qtd":1},"QUADREM":{"valor":14398.92,"qtd":1},"LUCIMEIRE":{"valor":113.0,"qtd":1},"REMNO":{"valor":20050.0,"qtd":3},"REFIT SOLUÇO":{"valor":4356.77,"qtd":1},"MOGI":{"valor":1188.9,"qtd":1},"Cascadura R":{"valor":15970.0,"qtd":1},"VEIRANO ADV":{"valor":7203.6,"qtd":1},"PROCUREMENT":{"valor":214.0,"qtd":1},"PREF CAJAMAR":{"valor":18705.92,"qtd":1},"TOTVS IBIRAP":{"valor":2000.0,"qtd":1},"ECONET":{"valor":700.0,"qtd":2},"LOCALIZA MG2":{"valor":5379.04,"qtd":7},"SYSTEM SEAL":{"valor":2214.0,"qtd":2},"GLEZIO ROCHA":{"valor":5345.0,"qtd":1},"CENTER TOOLS":{"valor":1568.0,"qtd":4},"PLASTERMO":{"valor":3698.57,"qtd":1},"PLAM MARCENA":{"valor":1452.6,"qtd":1},"HONTECH":{"valor":5213.13,"qtd":1},"ELETRIZEL":{"valor":1160.0,"qtd":2},"GIMBA":{"valor":2234.74,"qtd":26}},"compradores":{"beatriz":{"valor":1078460.37,"qtd":311,"label":"Beatriz"},"tpereira":{"valor":57149.01,"qtd":3,"label":"T. Pereira"},"jribeiro":{"valor":7203.6,"qtd":1,"label":"J. Ribeiro"}},"atrasoMediana":4,"pctNoPrazo":39.7},"2026-05":{"valorTotal":1069106.36,"qtdPedidos":323,"valorNacional":1069106.36,"valorImportado":0.0,"qtdNacional":323,"qtdImportado":0,"natureza":{"Serviço":{"valor":459698.98,"qtd":66},"Compra":{"valor":609407.38,"qtd":257}},"fornecedores":{"NHJ DO BRASI":{"valor":34231.9,"qtd":4},"TIMOTEC":{"valor":81251.99,"qtd":35},"MOGI":{"valor":5537.6,"qtd":6},"GAC REFORMA":{"valor":1150.0,"qtd":1},"TIMOTECH":{"valor":318192.7,"qtd":75},"SINGULAR":{"valor":2491.0,"qtd":4},"FIRE LESS":{"valor":28127.15,"qtd":2},"BT":{"valor":745.0,"qtd":2},"BRIZANTE":{"valor":6959.1,"qtd":20},"PLASTERMO":{"valor":80851.72,"qtd":23},"RONALDO CORR":{"valor":17403.97,"qtd":23},"CRM INTELLIG":{"valor":102.7,"qtd":1},"VIALIX":{"valor":6326.2,"qtd":1},"MTCA":{"valor":413.2,"qtd":1},"GLOBAL JUN.1":{"valor":29991.5,"qtd":16},"MESTRA VEDAB":{"valor":347.77,"qtd":6},"VES-T UNIFOR":{"valor":13536.0,"qtd":4},"RECONTECH":{"valor":13253.03,"qtd":1},"TOTVS IBIRAP":{"valor":31385.84,"qtd":4},"PRINER":{"valor":110.0,"qtd":1},"Fort Soluçõe":{"valor":21780.79,"qtd":1},"CASCADURA SP":{"valor":39940.0,"qtd":1},"SONED":{"valor":6894.93,"qtd":7},"VOAGE":{"valor":54802.47,"qtd":8},"ASCENDE LTDA":{"valor":2000.0,"qtd":2},"PIONEIRA":{"valor":1684.17,"qtd":1},"FABIA VITORI":{"valor":12000.0,"qtd":1},"LACNAM":{"valor":6156.88,"qtd":1},"MG3":{"valor":2044.35,"qtd":1},"GLOBAL DIS":{"valor":5025.0,"qtd":5},"DELL COMP":{"valor":18797.56,"qtd":2},"DELL PR":{"valor":1837.56,"qtd":1},"UNIPAR RANPA":{"valor":2248.87,"qtd":1},"R2 SAFETY":{"valor":5027.44,"qtd":8},"RICO SAFETY":{"valor":4852.25,"qtd":5},"NEW EXPO":{"valor":1680.0,"qtd":1},"BRASIL EAD":{"valor":228.0,"qtd":1},"FTM MECÂNICA":{"valor":2500.0,"qtd":2},"FALCONERY":{"valor":2650.0,"qtd":1},"REFIT SOLUÇO":{"valor":880.0,"qtd":1},"PB IMBETIBA":{"valor":45000.0,"qtd":1},"METALINOX CO":{"valor":13444.98,"qtd":2},"AÇOS FAVORIT":{"valor":10976.04,"qtd":1},"MASTER SAFE":{"valor":22350.0,"qtd":2},"MAKITA VEDA":{"valor":3413.76,"qtd":3},"VEIRANO ADV":{"valor":69388.2,"qtd":1},"SINDGRAF":{"valor":4320.0,"qtd":2},"GRAFICA VISA":{"valor":560.0,"qtd":1},"JUNDIPAR":{"valor":239.92,"qtd":15},"LOCALIZA MG2":{"valor":2890.69,"qtd":3},"WEST GROUP":{"valor":4887.0,"qtd":2},"VALFLUOR":{"valor":782.8,"qtd":3},"RIO TEC":{"valor":5000.0,"qtd":2},"BSI":{"valor":2053.14,"qtd":1},"PREF CAJAMAR":{"valor":3741.2,"qtd":1},"REMNO":{"valor":4800.0,"qtd":1},"ANGEROL":{"valor":9820.0,"qtd":1}},"compradores":{"beatriz":{"valor":1064254.12,"qtd":318,"label":"Beatriz"},"tpereira":{"valor":4852.25,"qtd":5,"label":"T. Pereira"}},"atrasoMediana":-3,"pctNoPrazo":57.0},"2026-06":{"valorTotal":1228180.06,"qtdPedidos":498,"valorNacional":1228180.06,"valorImportado":0.0,"qtdNacional":498,"qtdImportado":0,"natureza":{"Compra":{"valor":582291.61,"qtd":403},"Serviço":{"valor":645888.45,"qtd":95}},"fornecedores":{"TIMOTEC":{"valor":209708.91,"qtd":78},"JUNDIPAR":{"valor":485.09,"qtd":23},"GAC REFORMA":{"valor":5380.0,"qtd":2},"FENAC":{"valor":1540.88,"qtd":7},"TIMOTECH":{"valor":267078.58,"qtd":80},"SORIDRAULICA":{"valor":1900.0,"qtd":1},"BT":{"valor":14421.86,"qtd":16},"GRAFICA VISA":{"valor":750.0,"qtd":2},"CARBONO AM":{"valor":960.0,"qtd":1},"METRA":{"valor":3456.0,"qtd":1},"EXTINGOLD":{"valor":3547.0,"qtd":1},"JOTEC SOLUÇ":{"valor":3280.0,"qtd":1},"PLASTERMO":{"valor":8730.61,"qtd":8},"OTIMA ESTRA":{"valor":13200.0,"qtd":1},"GIMBA":{"valor":2760.71,"qtd":33},"MESTRA VEDAB":{"valor":7191.38,"qtd":27},"ANGEROL":{"valor":160.0,"qtd":1},"BRIZANTE":{"valor":16800.2,"qtd":34},"TOTVS IBIRAP":{"valor":868.57,"qtd":3},"COPPI":{"valor":3045.0,"qtd":2},"MG3":{"valor":14323.25,"qtd":5},"VALFLUOR":{"valor":4981.12,"qtd":5},"ACE":{"valor":5977.87,"qtd":1},"POROFIL":{"valor":744.0,"qtd":1},"DENKENTECH":{"valor":567.05,"qtd":2},"GLOBAL JUN.1":{"valor":14289.05,"qtd":18},"DELL COMP":{"valor":55975.04,"qtd":1},"DELL PR":{"valor":10090.12,"qtd":1},"SERV AGUA":{"valor":2290.0,"qtd":5},"GONTERMANN":{"valor":129.16,"qtd":1},"QUALITY RGM":{"valor":145351.52,"qtd":1},"Wyasheslav R":{"valor":4000.0,"qtd":1},"VOAGE":{"valor":107056.5,"qtd":28},"FTM MECÂNICA":{"valor":2500.0,"qtd":1},"ALLIANZ SEG":{"valor":6331.11,"qtd":1},"GLEZIO ROCHA":{"valor":4925.0,"qtd":1},"VIALIX":{"valor":1582.59,"qtd":1},"LACNAM":{"valor":18579.34,"qtd":1},"VES-T UNIFOR":{"valor":12960.0,"qtd":4},"SINDGRAF":{"valor":9660.0,"qtd":2},"J S ENGENHAR":{"valor":400.0,"qtd":1},"R2 SAFETY":{"valor":2687.08,"qtd":4},"METALINOX CO":{"valor":1700.0,"qtd":1},"PRINER":{"valor":440.0,"qtd":1},"LOCALIZA MG2":{"valor":17755.75,"qtd":10},"MATRIZPEL":{"valor":9480.66,"qtd":2},"EMPILHANOBRE":{"valor":11746.0,"qtd":1},"SINGULAR":{"valor":7037.0,"qtd":10},"APONTO":{"valor":3750.0,"qtd":2},"IMPÉRIO DO M":{"valor":8135.2,"qtd":2},"WL VEDAÇÕES3":{"valor":60.0,"qtd":1},"ELETRIZEL":{"valor":986.03,"qtd":17},"JS TINTAS":{"valor":6092.0,"qtd":8},"BSI":{"valor":17075.52,"qtd":2},"ALPHA METALI":{"valor":11245.0,"qtd":2},"AXA SEGUROS":{"valor":91587.82,"qtd":1},"SODEXO SP":{"valor":331.11,"qtd":2},"SYSTEM SEAL":{"valor":286.0,"qtd":2},"MKS REDUTORE":{"valor":689.0,"qtd":3},"ZIRTEC":{"valor":8954.87,"qtd":1},"BS SANEAMENT":{"valor":3260.0,"qtd":1},"RONALDO CORR":{"valor":10420.0,"qtd":9},"PRESTAMPA":{"valor":2800.16,"qtd":1},"CORR SOLUTIO":{"valor":2498.34,"qtd":2},"CS QUALIDADE":{"valor":2475.0,"qtd":7},"SCAN 2":{"valor":4993.0,"qtd":1},"FALCONERY":{"valor":13717.0,"qtd":1}},"compradores":{"beatriz":{"valor":1225041.95,"qtd":495,"label":"Beatriz"},"tpereira":{"valor":3138.11,"qtd":3,"label":"T. Pereira"}},"atrasoMediana":5.0,"pctNoPrazo":39.4},"2026-07":{"valorTotal":2057782.89,"qtdPedidos":437,"valorNacional":2057782.89,"valorImportado":0.0,"qtdNacional":437,"qtdImportado":0,"natureza":{"Compra":{"valor":1398359.99,"qtd":358},"Serviço":{"valor":659422.9,"qtd":79}},"fornecedores":{"TIMOTEC":{"valor":210743.56,"qtd":79},"REFIT SOLUÇO":{"valor":5754.97,"qtd":2},"TOTVS IBIRAP":{"valor":191769.71,"qtd":6},"HUSSEIN":{"valor":2341.62,"qtd":2},"CARMELO":{"valor":10465.0,"qtd":1},"OTIMA ESTRA":{"valor":17690.93,"qtd":3},"GLOBAL JUN.1":{"valor":28661.85,"qtd":26},"BRIZANTE":{"valor":33097.4,"qtd":53},"MG3":{"valor":3975.43,"qtd":4},"PLASTERMO":{"valor":60472.22,"qtd":21},"MESTRA VEDAB":{"valor":1453.17,"qtd":16},"LUCIANA F. B":{"valor":1000.0,"qtd":1},"FENAC":{"valor":596.4,"qtd":1},"TIMOTECH":{"valor":865896.24,"qtd":70},"IMPÉRIO DO M":{"valor":780.0,"qtd":1},"TOKIO":{"valor":5409.28,"qtd":3},"RONALDO CORR":{"valor":22789.0,"qtd":11},"PORTO SEGURO":{"valor":4205.61,"qtd":1},"AXA SEGUROS":{"valor":33452.06,"qtd":1},"SODEXO SP":{"valor":76.41,"qtd":2},"JUNDIANEL":{"valor":466.77,"qtd":14},"VALFLUOR":{"valor":2789.26,"qtd":8},"VIALIX":{"valor":2473.02,"qtd":1},"CANADENSE":{"valor":8280.0,"qtd":1},"ALPHA METALI":{"valor":14350.0,"qtd":2},"GIFOR":{"valor":2086.44,"qtd":2},"GIMBA":{"valor":3302.07,"qtd":30},"METALINOX CO":{"valor":10858.29,"qtd":2},"QUADREM":{"valor":30376.47,"qtd":1},"JUNDIPAR":{"valor":1580.73,"qtd":3},"LACNAM":{"valor":100993.58,"qtd":3},"COPPI":{"valor":236.0,"qtd":1},"WL VEDAÇÕES3":{"valor":832.07,"qtd":10},"METAL NORTE":{"valor":6400.0,"qtd":2},"VERSATRONIC":{"valor":10000.0,"qtd":1},"ASCENDE LTDA":{"valor":6150.0,"qtd":1},"LOCALIZA MG2":{"valor":10655.7,"qtd":6},"VOAGE":{"valor":57467.65,"qtd":20},"VEIRANO ADV":{"valor":17042.4,"qtd":1},"MASTER SAFE":{"valor":8500.0,"qtd":1},"GLEZIO ROCHA":{"valor":5675.0,"qtd":1},"SO MARCAS":{"valor":2492.1,"qtd":1},"GAC REFORMA":{"valor":3770.0,"qtd":1},"R2 SAFETY":{"valor":2600.4,"qtd":4},"MAPDATA":{"valor":31912.59,"qtd":1},"RIO TEC":{"valor":5440.0,"qtd":1},"CRM INTELLIG":{"valor":76.19,"qtd":1},"APONTO":{"valor":500.0,"qtd":1},"Galv BH":{"valor":600.0,"qtd":1},"DISTRIB AGUA":{"valor":2790.0,"qtd":1},"SINGULAR":{"valor":1973.0,"qtd":1},"HIDROVARZEA":{"valor":2790.0,"qtd":1},"BSI":{"valor":997.65,"qtd":1},"GRAFICA VISA":{"valor":220.0,"qtd":1},"PLAM MARCENA":{"valor":8039.95,"qtd":2},"MBF":{"valor":11881.14,"qtd":2},"LABORMETRO":{"valor":580.0,"qtd":1},"Yelum Seguro":{"valor":179973.56,"qtd":1}},"compradores":{"beatriz":{"valor":88605.87,"qtd":48,"label":"Beatriz"},"tpereira":{"valor":1490960.19,"qtd":297,"label":"T. Pereira"},"cialves":{"valor":21239.81,"qtd":8,"label":"C. Alves"},"cristian":{"valor":10858.29,"qtd":2,"label":"Cristian"},"bruno":{"valor":446118.74,"qtd":82,"label":"Bruno"}},"atrasoMediana":-1,"pctNoPrazo":56.5},"2026-08":{"valorTotal":61419612.96,"qtdPedidos":506,"valorNacional":61419612.96,"valorImportado":0.0,"qtdNacional":506,"qtdImportado":0,"natureza":{"Serviço":{"valor":60130858.48,"qtd":99},"Compra":{"valor":1288754.48,"qtd":407}},"fornecedores":{"TIMOTEC":{"valor":267228.81,"qtd":88},"MAZATOOLS":{"valor":2541.4,"qtd":1},"PLASTERMO":{"valor":71809.34,"qtd":21},"MUNDIAL":{"valor":54684.0,"qtd":1},"JATI":{"valor":43218.73,"qtd":5},"COPPI":{"valor":2401.72,"qtd":2},"WL VEDAÇÕES3":{"valor":6032.92,"qtd":13},"TOKIO":{"valor":1705.59,"qtd":1},"TOTVS IBIRAP":{"valor":1675.6,"qtd":4},"GRAFICA VISA":{"valor":1020.0,"qtd":1},"MG3":{"valor":10673.99,"qtd":2},"TIMOTECH":{"valor":619424.98,"qtd":143},"RUSPRISTEEL1":{"valor":10184.96,"qtd":2},"GLOBAL JUN.1":{"valor":55274.74,"qtd":32},"KPMG":{"valor":60068.52,"qtd":1},"VIALIX":{"valor":1578.32,"qtd":1},"SMAGON1":{"valor":26000.0,"qtd":1},"Galv BH":{"valor":600.0,"qtd":1},"BRIZANTE":{"valor":9750.76,"qtd":18},"RIO TEC":{"valor":1262.4,"qtd":1},"JDUARTE":{"valor":10398.8,"qtd":2},"DEVELOP":{"valor":70672.77,"qtd":2},"CLAITON ROBE":{"valor":1050.0,"qtd":1},"JE VEDACOES":{"valor":181.5,"qtd":1},"VALFLUOR":{"valor":9435.64,"qtd":3},"CARBONO AM":{"valor":9560.0,"qtd":1},"REIS BATERIA":{"valor":1206.81,"qtd":1},"VEIRANO ADV":{"valor":6611.57,"qtd":1},"MESTRA VEDAB":{"valor":57.54,"qtd":2},"FIRE LESS":{"valor":95732.75,"qtd":4},"INSPESOLDA":{"valor":18000.0,"qtd":1},"CANADENSE":{"valor":4300.0,"qtd":1},"EMBRATEL":{"valor":16.89,"qtd":1},"GAC REFORMA":{"valor":6230.0,"qtd":1},"CENTER TOOLS":{"valor":29357.01,"qtd":18},"METALINOX CO":{"valor":97860.59,"qtd":10},"SERV AGUA":{"valor":3427.67,"qtd":5},"HIDROVARZEA":{"valor":2800.0,"qtd":1},"UNIPAR RANPA":{"valor":2894.71,"qtd":2},"INTENGE":{"valor":35136.0,"qtd":1},"TECFLUX":{"valor":950.41,"qtd":2},"Alametais Co":{"valor":2174.45,"qtd":1},"VOAGE":{"valor":31179.5,"qtd":11},"SO MARCAS":{"valor":16065.0,"qtd":4},"HCG EQUIP.":{"valor":2111.94,"qtd":1},"BRASIL EAD":{"valor":57.0,"qtd":1},"GLEZIO ROCHA":{"valor":11350.0,"qtd":1},"OTIMA ESTRA":{"valor":801.04,"qtd":1},"LOCALIZA MG2":{"valor":2797.88,"qtd":8},"MAXXIMA":{"valor":390.0,"qtd":1},"SINGULAR":{"valor":1143.0,"qtd":1},"JOTEC SOLUÇ":{"valor":4540.0,"qtd":3},"LABORMETRO":{"valor":3029.05,"qtd":4},"JUNDIANEL":{"valor":182.47,"qtd":4},"FTM MECÂNICA":{"valor":17260.0,"qtd":9},"Leal, Cotrim":{"valor":160000.0,"qtd":1},"IBPG":{"valor":12757.0,"qtd":2},"IBAMA":{"valor":1000.0,"qtd":1},"ABIMAQ":{"valor":1850.0,"qtd":1},"SUPERFITAS":{"valor":3955.0,"qtd":1},"MATHEUS DEFI":{"valor":1600.0,"qtd":1},"GS CORRENTES":{"valor":2040.0,"qtd":2},"ASCENDE LTDA":{"valor":250.0,"qtd":1},"CAVALCANTE":{"valor":59376003.54,"qtd":2},"VIKLA":{"valor":2165.84,"qtd":2},"SIGMA 3D":{"valor":19918.97,"qtd":2},"ANHANGUERA 2":{"valor":546.72,"qtd":1},"ICI UNIFORME":{"valor":13663.68,"qtd":2},"JS TINTAS":{"valor":2675.2,"qtd":10},"PLAM MARCENA":{"valor":1911.0,"qtd":1},"SYSTEM SEAL":{"valor":4242.24,"qtd":5},"MCE VEDAÇÕES":{"valor":5589.78,"qtd":2},"METRA":{"valor":2695.0,"qtd":1},"W7 PROMO":{"valor":348.3,"qtd":1},"GLOBAL DIS":{"valor":10050.0,"qtd":5},"ANGEROL":{"valor":450.0,"qtd":1},"BRAMA":{"valor":2594.79,"qtd":4},"Dell Computa":{"valor":22126.87,"qtd":1},"DELL PR":{"valor":4299.19,"qtd":1},"FEDEX":{"valor":9677.94,"qtd":1},"HSR TECH":{"valor":4500.0,"qtd":1},"CRM INTELLIG":{"valor":114.6,"qtd":1},"SERGIO FARIA":{"valor":6336.0,"qtd":1},"BT":{"valor":152.54,"qtd":1}},"compradores":{"bruno":{"valor":61217998.75,"qtd":458,"label":"Bruno"},"tpereira":{"valor":181711.97,"qtd":42,"label":"T. Pereira"},"cristian":{"valor":19902.24,"qtd":6,"label":"Cristian"}},"atrasoMediana":-15.0,"pctNoPrazo":70.0}},"Importado":{"Todos":{"valorTotal":6604598.94,"qtdPedidos":1024,"valorNacional":0.0,"valorImportado":6604598.94,"qtdNacional":0,"qtdImportado":1024,"natureza":{"Compra":{"valor":6331929.28,"qtd":998},"Serviço":{"valor":272669.66,"qtd":26}},"fornecedores":{"4AG":{"valor":400925.35,"qtd":39},"1DG":{"valor":1119222.9,"qtd":113},"4AS":{"valor":1667677.83,"qtd":395},"4AC":{"valor":2693953.09,"qtd":469},"6CA":{"valor":722819.76,"qtd":8}},"compradores":{"cristian":{"valor":643482.42,"qtd":20,"label":"Cristian"},"tpereira":{"valor":4237465.02,"qtd":835,"label":"T. Pereira"},"beatriz":{"valor":1723651.5,"qtd":169,"label":"Beatriz"}},"atrasoMediana":6.0,"pctNoPrazo":14.6},"2026-01":{"valorTotal":1428815.9,"qtdPedidos":102,"valorNacional":0.0,"valorImportado":1428815.9,"qtdNacional":0,"qtdImportado":102,"natureza":{"Compra":{"valor":1428815.9,"qtd":102}},"fornecedores":{"4AG":{"valor":35683.32,"qtd":4},"1DG":{"valor":103714.31,"qtd":6},"4AS":{"valor":773817.93,"qtd":63},"4AC":{"valor":47473.13,"qtd":24},"6CA":{"valor":468127.21,"qtd":5}},"compradores":{"cristian":{"valor":643482.42,"qtd":20,"label":"Cristian"},"tpereira":{"valor":240501.36,"qtd":51,"label":"T. Pereira"},"beatriz":{"valor":544832.11,"qtd":31,"label":"Beatriz"}},"atrasoMediana":10.0,"pctNoPrazo":10.8},"2026-02":{"valorTotal":787332.21,"qtdPedidos":212,"valorNacional":0.0,"valorImportado":787332.21,"qtdNacional":0,"qtdImportado":212,"natureza":{"Compra":{"valor":711037.55,"qtd":204},"Serviço":{"valor":76294.67,"qtd":8}},"fornecedores":{"4AS":{"valor":171693.14,"qtd":169},"4AC":{"valor":169519.03,"qtd":31},"1DG":{"valor":405338.41,"qtd":9},"4AG":{"valor":40781.64,"qtd":3}},"compradores":{"tpereira":{"valor":238212.45,"qtd":140,"label":"T. Pereira"},"beatriz":{"valor":549119.76,"qtd":72,"label":"Beatriz"}},"atrasoMediana":2.0,"pctNoPrazo":11.8},"2026-03":{"valorTotal":432318.82,"qtdPedidos":97,"valorNacional":0.0,"valorImportado":432318.82,"qtdNacional":0,"qtdImportado":97,"natureza":{"Compra":{"valor":366796.35,"qtd":94},"Serviço":{"valor":65522.48,"qtd":3}},"fornecedores":{"4AG":{"valor":60277.16,"qtd":2},"4AS":{"valor":129760.88,"qtd":41},"4AC":{"valor":157500.15,"qtd":37},"1DG":{"valor":84780.63,"qtd":17}},"compradores":{"beatriz":{"valor":270846.59,"qtd":45,"label":"Beatriz"},"tpereira":{"valor":161472.24,"qtd":52,"label":"T. Pereira"}},"atrasoMediana":8,"pctNoPrazo":11.3},"2026-04":{"valorTotal":908453.55,"qtdPedidos":102,"valorNacional":0.0,"valorImportado":908453.55,"qtdNacional":0,"qtdImportado":102,"natureza":{"Compra":{"valor":908453.55,"qtd":102}},"fornecedores":{"4AS":{"valor":4766.1,"qtd":6},"1DG":{"valor":349585.91,"qtd":32},"4AC":{"valor":523199.47,"qtd":61},"4AG":{"valor":30902.07,"qtd":3}},"compradores":{"tpereira":{"valor":549912.03,"qtd":82,"label":"T. Pereira"},"beatriz":{"valor":358541.52,"qtd":20,"label":"Beatriz"}},"atrasoMediana":9.5,"pctNoPrazo":0.0},"2026-05":{"valorTotal":332012.66,"qtdPedidos":80,"valorNacional":0.0,"valorImportado":332012.66,"qtdNacional":0,"qtdImportado":80,"natureza":{"Compra":{"valor":332012.66,"qtd":80}},"fornecedores":{"4AC":{"valor":301529.67,"qtd":66},"1DG":{"valor":22599.59,"qtd":8},"4AS":{"valor":7883.4,"qtd":6}},"compradores":{"beatriz":{"valor":311.52,"qtd":1,"label":"Beatriz"},"tpereira":{"valor":331701.14,"qtd":79,"label":"T. Pereira"}},"atrasoMediana":6.0,"pctNoPrazo":3.8},"2026-06":{"valorTotal":1219311.86,"qtdPedidos":228,"valorNacional":0.0,"valorImportado":1219311.86,"qtdNacional":0,"qtdImportado":228,"natureza":{"Compra":{"valor":1124736.19,"qtd":214},"Serviço":{"valor":94575.66,"qtd":14}},"fornecedores":{"4AC":{"valor":414879.75,"qtd":126},"4AS":{"valor":370084.09,"qtd":72},"1DG":{"valor":80473.93,"qtd":12},"6CA":{"valor":254692.55,"qtd":3},"4AG":{"valor":99181.53,"qtd":15}},"compradores":{"tpereira":{"valor":1219311.86,"qtd":228,"label":"T. Pereira"}},"atrasoMediana":8.0,"pctNoPrazo":3.5},"2026-07":{"valorTotal":1243611.71,"qtdPedidos":132,"valorNacional":0.0,"valorImportado":1243611.71,"qtdNacional":0,"qtdImportado":132,"natureza":{"Compra":{"valor":1207334.85,"qtd":131},"Serviço":{"valor":36276.86,"qtd":1}},"fornecedores":{"4AG":{"valor":112955.86,"qtd":11},"4AC":{"valor":917665.83,"qtd":81},"4AS":{"valor":172529.15,"qtd":23},"1DG":{"valor":40460.87,"qtd":17}},"compradores":{"tpereira":{"valor":1243611.71,"qtd":132,"label":"T. Pereira"}},"atrasoMediana":6.0,"pctNoPrazo":28.0},"2026-08":{"valorTotal":252742.23,"qtdPedidos":71,"valorNacional":0.0,"valorImportado":252742.23,"qtdNacional":0,"qtdImportado":71,"natureza":{"Compra":{"valor":252742.23,"qtd":71}},"fornecedores":{"4AS":{"valor":37143.15,"qtd":15},"4AG":{"valor":21143.77,"qtd":1},"4AC":{"valor":162186.06,"qtd":43},"1DG":{"valor":32269.26,"qtd":12}},"compradores":{"tpereira":{"valor":252742.23,"qtd":71,"label":"T. Pereira"}},"atrasoMediana":-58,"pctNoPrazo":76.1}}}};
+
+/* ---------------- theme ---------------- */
+(function(){
+  const btn = document.getElementById('themeToggle');
+  let saved = null;
+  try{ saved = localStorage.getItem('hb-theme'); }catch(e){}
+  if(saved === 'light' || saved === 'dark'){ document.documentElement.setAttribute('data-theme', saved); }
+  btn.addEventListener('click', function(){
+    const current = document.documentElement.getAttribute('data-theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const effectiveDark = current ? current === 'dark' : prefersDark;
+    const next = effectiveDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try{ localStorage.setItem('hb-theme', next); }catch(e){}
+  });
+})();
+
+/* ---------------- helpers ---------------- */
+function fmtCompact(v){
+  const sign = v < 0 ? '-' : '';
+  const abs = Math.abs(v);
+  if(abs >= 1e9) return sign + 'R$ ' + (abs/1e9).toFixed(1).replace('.',',') + ' bi';
+  if(abs >= 1e6) return sign + 'R$ ' + (abs/1e6).toFixed(1).replace('.',',') + ' mi';
+  if(abs >= 1e3) return sign + 'R$ ' + (abs/1e3).toFixed(0).replace('.',',') + ' mil';
+  return sign + 'R$ ' + abs.toFixed(0).replace('.',',');
+}
+function fmtFull(v){
+  return 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits:0, maximumFractionDigits:0});
+}
+function fmtInt(v){ return v.toLocaleString('pt-BR'); }
+function fmtPct(v){ return v.toLocaleString('pt-BR', {minimumFractionDigits:1, maximumFractionDigits:1}) + '%'; }
+
+const ICONS = {
+  money: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2.2"/><circle cx="12" cy="12" r="2.6"/><path d="M5.5 9v.01M18.5 15v.01"/></svg>',
+  box: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4.2 7.7L12 12l7.8-4.3M12 12v9"/></svg>',
+  globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 4 5.7 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.7-4-9s1.5-6.5 4-9z"/></svg>',
+  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.2 1.8"/></svg>',
+  swap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg>',
+  layers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>',
+  trend: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 6h6v6"/></svg>',
+  rank: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10"/><path d="M11 20V4"/><path d="M17 20v-7"/></svg>'
+};
+function applyStaticIcons(){
+  document.querySelectorAll('[data-icon]').forEach(function(el){
+    const name = el.getAttribute('data-icon');
+    if(ICONS[name]) el.innerHTML = ICONS[name];
+  });
+}
+
+const tooltipEl = document.getElementById('tooltip');
+function showTooltip(x, y, html){
+  tooltipEl.innerHTML = '';
+  const frag = document.createElement('div');
+  frag.innerHTML = html;
+  while(frag.firstChild) tooltipEl.appendChild(frag.firstChild);
+  tooltipEl.style.left = x + 'px';
+  tooltipEl.style.top = y + 'px';
+  tooltipEl.hidden = false;
+}
+function hideTooltip(){ tooltipEl.hidden = true; }
+function ttRow(nameText, valText){
+  const wrap = document.createElement('div');
+  const val = document.createElement('div'); val.className='tt-val'; val.textContent = valText;
+  const name = document.createElement('div'); name.className='tt-name'; name.textContent = nameText;
+  wrap.appendChild(val); wrap.appendChild(name);
+  return wrap.innerHTML;
+}
+
+/* ---------------- state ---------------- */
+const state = { month: 'Todos', origem: 'Todos' };
+
+/* ---------------- month pills ---------------- */
+const monthPillsEl = document.getElementById('monthPills');
+function buildPills(){
+  const frag = [];
+  const allBtn = document.createElement('button');
+  allBtn.className = 'pill active'; allBtn.dataset.val = 'Todos'; allBtn.type='button';
+  allBtn.textContent = 'Todos os meses';
+  monthPillsEl.appendChild(allBtn);
+  DATA.months.forEach(function(m){
+    const b = document.createElement('button');
+    b.className = 'pill'; b.dataset.val = m; b.type = 'button';
+    b.textContent = DATA.monthLabels[m];
+    monthPillsEl.appendChild(b);
+  });
+  monthPillsEl.addEventListener('click', function(e){
+    const b = e.target.closest('.pill');
+    if(!b) return;
+    state.month = b.dataset.val;
+    monthPillsEl.querySelectorAll('.pill').forEach(function(p){ p.classList.toggle('active', p === b); });
+    render();
+  });
+}
+
+/* ---------------- origem segmented ---------------- */
+const origemSegEl = document.getElementById('origemSeg');
+origemSegEl.addEventListener('click', function(e){
+  const b = e.target.closest('.seg-btn');
+  if(!b) return;
+  state.origem = b.dataset.val;
+  origemSegEl.querySelectorAll('.seg-btn').forEach(function(p){ p.classList.toggle('active', p === b); });
+  render();
+});
+
+/* ---------------- donut builder ---------------- */
+function buildDonut(svgEl, segments, centerValEl){
+  svgEl.innerHTML = '';
+  const total = segments.reduce(function(s,d){ return s + d.value; }, 0);
+  const r = 54, cx = 75, cy = 75, stroke = 20;
+  const C = 2 * Math.PI * r;
+  const gap = total > 0 ? 3 : 0;
+  let acc = 0;
+  const ns = 'http://www.w3.org/2000/svg';
+  const bg = document.createElementNS(ns, 'circle');
+  bg.setAttribute('cx', cx); bg.setAttribute('cy', cy); bg.setAttribute('r', r);
+  bg.setAttribute('fill', 'none'); bg.setAttribute('stroke', 'var(--surface-2)'); bg.setAttribute('stroke-width', stroke);
+  svgEl.appendChild(bg);
+  segments.forEach(function(seg){
+    if(seg.value <= 0) return;
+    const frac = total > 0 ? seg.value / total : 0;
+    const len = Math.max(frac * C - gap, 0);
+    const circle = document.createElementNS(ns, 'circle');
+    circle.setAttribute('cx', cx); circle.setAttribute('cy', cy); circle.setAttribute('r', r);
+    circle.setAttribute('fill', 'none');
+    circle.setAttribute('stroke', seg.color);
+    circle.setAttribute('stroke-width', stroke);
+    circle.setAttribute('stroke-linecap', 'round');
+    circle.setAttribute('stroke-dasharray', len + ' ' + (C - len));
+    circle.setAttribute('stroke-dashoffset', (-acc) + '');
+    circle.setAttribute('transform', 'rotate(-90 ' + cx + ' ' + cy + ')');
+    circle.style.cursor = 'pointer';
+    circle.addEventListener('pointermove', function(ev){
+      showTooltip(ev.clientX, ev.clientY, ttRow(seg.label + ' · ' + fmtPct(frac*100), fmtFull(seg.value)));
+    });
+    circle.addEventListener('pointerleave', hideTooltip);
+    svgEl.appendChild(circle);
+    acc += frac * C;
+  });
+  if(centerValEl) centerValEl.textContent = fmtCompact(total);
+}
+
+/* ---------------- horizontal bar list ---------------- */
+function buildHBarList(container, items, opts){
+  container.innerHTML = '';
+  opts = opts || {};
+  const max = items.reduce(function(m,d){ return Math.max(m, d.value); }, 0) || 1;
+  items.forEach(function(item, i){
+    const row = document.createElement('div');
+    row.className = 'hbar-row';
+
+    const nameWrap = document.createElement('div');
+    nameWrap.style.display='flex'; nameWrap.style.alignItems='center'; nameWrap.style.gap='4px'; nameWrap.style.minWidth='0'; nameWrap.style.overflow='hidden';
+    const rank = document.createElement('span'); rank.className='hbar-rank'; rank.textContent = (i+1) + '.';
+    const name = document.createElement('span'); name.className = 'hbar-name'; name.textContent = item.label;
+    nameWrap.appendChild(rank); nameWrap.appendChild(name);
+
+    const track = document.createElement('div'); track.className = 'hbar-track';
+    const fill = document.createElement('div'); fill.className = 'hbar-fill';
+    fill.style.width = Math.max(3, (item.value / max) * 100) + '%';
+    fill.style.background = item.color || 'var(--accent)';
+    track.appendChild(fill);
+
+    const val = document.createElement('div'); val.className = 'hbar-val'; val.textContent = fmtCompact(item.value);
+
+    track.addEventListener('pointermove', function(ev){
+      showTooltip(ev.clientX, ev.clientY, ttRow(item.label + (item.meta ? ' · ' + item.meta : ''), fmtFull(item.value)));
+    });
+    track.addEventListener('pointerleave', hideTooltip);
+
+    row.appendChild(nameWrap); row.appendChild(track); row.appendChild(val);
+    container.appendChild(row);
+  });
+}
+
+/* ---------------- trend chart ---------------- */
+function buildTrend(svgEl, points, selectedIdx, opts){
+  opts = opts || {};
+  const color = opts.color || 'var(--accent)';
+  const labelFn = opts.labelFn || function(v){ return fmtCompact(v).replace('R$ ', ''); };
+  const tooltipValFn = opts.tooltipValFn || fmtFull;
+  svgEl.innerHTML = '';
+  const ns = 'http://www.w3.org/2000/svg';
+  const H = 210;
+  const W = Math.max(280, Math.round(svgEl.getBoundingClientRect().width) || 540);
+  svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+  const padL = 8, padR = 8, padT = 26, padB = 30;
+  const innerW = W - padL - padR, innerH = H - padT - padB;
+  const n = points.length;
+  const gap = Math.max(6, Math.min(14, innerW / n * 0.28));
+  const bw = Math.min(40, (innerW - gap*(n-1)) / n);
+  const usedW = bw*n + gap*(n-1);
+  const startX = padL + (innerW - usedW)/2;
+  const max = Math.max.apply(null, points.map(function(p){ return p.value; })) || 1;
+
+  const baseline = document.createElementNS(ns,'line');
+  baseline.setAttribute('x1', padL); baseline.setAttribute('x2', W-padR);
+  baseline.setAttribute('y1', H-padB); baseline.setAttribute('y2', H-padB);
+  baseline.setAttribute('stroke', 'var(--baseline)'); baseline.setAttribute('stroke-width', 1);
+  svgEl.appendChild(baseline);
+
+  points.forEach(function(p, i){
+    const x = startX + i*(bw+gap);
+    const h = max > 0 ? (p.value / max) * innerH : 0;
+    const y = (H - padB) - h;
+    const rect = document.createElementNS(ns, 'rect');
+    rect.setAttribute('x', x); rect.setAttribute('y', y);
+    rect.setAttribute('width', bw); rect.setAttribute('height', Math.max(h,1));
+    rect.setAttribute('rx', 4);
+    const isSel = selectedIdx === i;
+    rect.setAttribute('fill', selectedIdx === null ? color : (isSel ? color : 'var(--surface-2)'));
+    rect.classList.add('bar-seg');
+    rect.addEventListener('pointermove', function(ev){
+      showTooltip(ev.clientX, ev.clientY, ttRow(p.shortLabel, tooltipValFn(p.value)));
+    });
+    rect.addEventListener('pointerleave', hideTooltip);
+    rect.addEventListener('click', function(){
+      state.month = p.key;
+      document.querySelectorAll('.pill').forEach(function(pl){ pl.classList.toggle('active', pl.dataset.val === p.key); });
+      render();
+    });
+    svgEl.appendChild(rect);
+
+    const label = document.createElementNS(ns, 'text');
+    label.setAttribute('x', x + bw/2); label.setAttribute('y', y - 8);
+    label.setAttribute('text-anchor', 'middle'); label.setAttribute('class', 'bar-label');
+    label.textContent = labelFn(p.value);
+    if(n <= 9 || isSel || selectedIdx === null) svgEl.appendChild(label);
+
+    const axis = document.createElementNS(ns, 'text');
+    axis.setAttribute('x', x + bw/2); axis.setAttribute('y', H - padB + 18);
+    axis.setAttribute('text-anchor', 'middle'); axis.setAttribute('class', 'bar-axis-label');
+    axis.textContent = p.shortLabel;
+    svgEl.appendChild(axis);
+  });
+}
+
+/* ---------------- sparkline ---------------- */
+function buildSparkline(container, values, selIdx){
+  const ns = 'http://www.w3.org/2000/svg';
+  const W = 200, H = 30, pad = 4;
+  const max = Math.max.apply(null, values) || 1;
+  const min = Math.min.apply(null, values);
+  const range = (max - min) || 1;
+  const n = values.length;
+  const step = (W - pad*2) / (n - 1 || 1);
+  const pts = values.map(function(v, i){
+    const x = pad + i*step;
+    const y = H - pad - ((v - min) / range) * (H - pad*2);
+    return [x,y];
+  });
+  const d = pts.map(function(p,i){ return (i===0?'M':'L') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
+  const svg = document.createElementNS(ns, 'svg');
+  svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+  const path = document.createElementNS(ns,'path');
+  path.setAttribute('d', d); path.setAttribute('fill','none');
+  path.setAttribute('stroke','var(--muted)'); path.setAttribute('stroke-width','2');
+  path.setAttribute('stroke-linecap','round'); path.setAttribute('stroke-linejoin','round');
+  svg.appendChild(path);
+  const idx = selIdx === null ? n-1 : selIdx;
+  if(pts[idx]){
+    const dot = document.createElementNS(ns,'circle');
+    dot.setAttribute('cx', pts[idx][0]); dot.setAttribute('cy', pts[idx][1]); dot.setAttribute('r', 3.5);
+    dot.setAttribute('fill', 'var(--accent)');
+    dot.setAttribute('stroke','var(--surface)'); dot.setAttribute('stroke-width','2');
+    svg.appendChild(dot);
+  }
+  container.innerHTML = '';
+  container.appendChild(svg);
+}
+
+/* ---------------- stat tile ---------------- */
+function statTile(label, value, opts){
+  opts = opts || {};
+  const el = document.createElement('div');
+  el.className = 'stat' + (opts.hero ? ' hero' : '');
+  if(opts.icon){
+    const ic = document.createElement('span');
+    ic.className = 'stat-icon' + (opts.iconVariant ? ' i-' + opts.iconVariant : '');
+    ic.innerHTML = ICONS[opts.icon] || '';
+    el.appendChild(ic);
+  }
+  const l = document.createElement('span'); l.className='stat-label'; l.textContent = label;
+  const row = document.createElement('div'); row.className='stat-value-row';
+  const v = document.createElement('span'); v.className='stat-value'; v.textContent = value;
+  row.appendChild(v);
+  if(opts.delta !== undefined && opts.delta !== null){
+    const d = document.createElement('span');
+    d.className = 'stat-delta ' + (opts.delta >= 0 ? 'up' : 'down');
+    d.textContent = (opts.delta >= 0 ? '▲ ' : '▼ ') + Math.abs(opts.delta).toFixed(1) + '%';
+    row.appendChild(d);
+  }
+  el.appendChild(l); el.appendChild(row);
+  if(opts.foot){ const f = document.createElement('span'); f.className='stat-foot'; f.textContent = opts.foot; el.appendChild(f); }
+  if(opts.spark){ const s = document.createElement('div'); s.className='stat-spark'; el.appendChild(s); opts.sparkTarget = s; }
+  return el;
+}
+
+/* ---------------- split tile (Nacional x Importado) ---------------- */
+function buildSplitTile(pctNac, pctImp, valNac, valImp){
+  const el = document.createElement('div');
+  el.className = 'stat';
+  const ic = document.createElement('span'); ic.className = 'stat-icon'; ic.innerHTML = ICONS.globe;
+  const l = document.createElement('span'); l.className = 'stat-label'; l.textContent = 'Nacional × importado';
+  const bar = document.createElement('div'); bar.className = 'split-bar';
+  const seg1 = document.createElement('div'); seg1.className = 'split-seg'; seg1.style.width = pctNac + '%'; seg1.style.background = 'var(--accent)';
+  const seg2 = document.createElement('div'); seg2.className = 'split-seg'; seg2.style.width = pctImp + '%'; seg2.style.background = 'var(--accent-2)';
+  bar.appendChild(seg1); bar.appendChild(seg2);
+  const legend = document.createElement('div'); legend.className = 'split-legend';
+  const r1 = document.createElement('span'); r1.innerHTML = '<i style="background:var(--accent)"></i>';
+  r1.appendChild(document.createTextNode('Nacional ' + fmtPct(pctNac)));
+  const r2 = document.createElement('span'); r2.innerHTML = '<i style="background:var(--accent-2)"></i>';
+  r2.appendChild(document.createTextNode('Importado ' + fmtPct(pctImp)));
+  legend.appendChild(r1); legend.appendChild(r2);
+  el.appendChild(ic); el.appendChild(l); el.appendChild(bar); el.appendChild(legend);
+  return el;
+}
+
+/* ---------------- entrega tile (mediana de atraso, neutro) ---------------- */
+function buildEntregaTile(pctNoPrazo, atrasoMediana){
+  const el = document.createElement('div');
+  el.className = 'stat';
+  const ic = document.createElement('span'); ic.className = 'stat-icon'; ic.innerHTML = ICONS.clock;
+  const l = document.createElement('span'); l.className = 'stat-label'; l.textContent = 'Mediana de atraso';
+  const row = document.createElement('div'); row.className = 'stat-value-row';
+  const v = document.createElement('span'); v.className = 'stat-value';
+  v.textContent = (atrasoMediana > 0 ? '+' : '') + atrasoMediana.toLocaleString('pt-BR', {maximumFractionDigits:1}) + ' dias';
+  row.appendChild(v);
+  const foot = document.createElement('span'); foot.className = 'stat-foot';
+  foot.textContent = fmtPct(pctNoPrazo) + ' dos itens no prazo';
+  el.appendChild(ic); el.appendChild(l); el.appendChild(row); el.appendChild(foot);
+  return el;
+}
+
+/* ---------------- insight chips ---------------- */
+function buildChip(dotColor, text){
+  const chip = document.createElement('span'); chip.className = 'chip';
+  const dot = document.createElement('span'); dot.className = 'chip-dot'; dot.style.background = dotColor;
+  chip.appendChild(dot);
+  chip.appendChild(document.createTextNode(text));
+  return chip;
+}
+
+/* ---------------- main render ---------------- */
+function render(){
+  const leaf = DATA.combos[state.origem][state.month];
+  const monthIdx = state.month === 'Todos' ? null : DATA.months.indexOf(state.month);
+
+  document.getElementById('periodLabel').textContent = state.month === 'Todos'
+    ? (DATA.monthLabels[DATA.months[0]] + ' – ' + DATA.monthLabels[DATA.months[DATA.months.length-1]])
+    : DATA.monthLabels[state.month];
+  document.getElementById('generatedAt').textContent = DATA.generatedAt;
+
+  /* KPI row */
+  const kpiRow = document.getElementById('kpiRow');
+  kpiRow.innerHTML = '';
+
+  let delta = null;
+  if(monthIdx !== null && monthIdx > 0){
+    const prevKey = DATA.months[monthIdx - 1];
+    const prevVal = DATA.combos[state.origem][prevKey].valorTotal;
+    if(prevVal > 0) delta = ((leaf.valorTotal - prevVal) / prevVal) * 100;
+  }
+  const pctNac = leaf.valorTotal > 0 ? (leaf.valorNacional / leaf.valorTotal) * 100 : 0;
+  const pctImp = leaf.valorTotal > 0 ? (leaf.valorImportado / leaf.valorTotal) * 100 : 0;
+
+  const t1 = statTile('Valor total de pedidos', fmtCompact(leaf.valorTotal), { delta: delta, foot: fmtFull(leaf.valorTotal), spark:true, hero:true, icon:'money' });
+  kpiRow.appendChild(t1);
+  const sparkValues = DATA.months.map(function(m){ return DATA.combos[state.origem][m].valorTotal; });
+  buildSparkline(t1.querySelector('.stat-spark'), sparkValues, monthIdx);
+
+  const ticket = leaf.qtdPedidos > 0 ? leaf.valorTotal / leaf.qtdPedidos : 0;
+  kpiRow.appendChild(statTile('Quantidade de pedidos', fmtInt(leaf.qtdPedidos), { foot: 'Ticket médio ' + fmtCompact(ticket), icon:'box' }));
+
+  kpiRow.appendChild(buildSplitTile(pctNac, pctImp, leaf.valorNacional, leaf.valorImportado));
+  kpiRow.appendChild(buildEntregaTile(leaf.pctNoPrazo, leaf.atrasoMediana));
+
+  /* Insight chips */
+  const insightsRow = document.getElementById('insightsRow');
+  insightsRow.innerHTML = '';
+  if(leaf.valorTotal > 0){
+    const origDominant = leaf.valorNacional >= leaf.valorImportado
+      ? { label:'Nacional', pct:pctNac, color:'var(--accent)' }
+      : { label:'Importado', pct:pctImp, color:'var(--accent-2)' };
+    insightsRow.appendChild(buildChip(origDominant.color, origDominant.label + ' concentra ' + fmtPct(origDominant.pct) + ' do valor'));
+
+    const natOrderIns = ['Compra','Serviço','Beneficiamento'];
+    const natColorsIns = { 'Compra':'var(--accent)', 'Serviço':'var(--accent-3)', 'Beneficiamento':'var(--accent-4)' };
+    const natLabelsIns = { 'Compra':'Compras', 'Serviço':'Serviços', 'Beneficiamento':'Beneficiamento' };
+    let natTop = null;
+    natOrderIns.forEach(function(k){
+      const v = (leaf.natureza[k]||{}).valor||0;
+      if(!natTop || v > natTop.v) natTop = { k:k, v:v };
+    });
+    if(natTop && natTop.v > 0){
+      const pct = (natTop.v/leaf.valorTotal)*100;
+      insightsRow.appendChild(buildChip(natColorsIns[natTop.k], natLabelsIns[natTop.k] + ' representa ' + fmtPct(pct) + ' do valor'));
+    }
+
+    insightsRow.appendChild(buildChip('var(--accent-3)', 'Mediana de atraso de ' + (leaf.atrasoMediana > 0 ? '+' : '') + leaf.atrasoMediana.toLocaleString('pt-BR', {maximumFractionDigits:1}) + ' dias'));
+
+    const fornKeys = Object.keys(leaf.fornecedores);
+    if(fornKeys.length > 0){
+      let topForn = fornKeys.reduce(function(a,b){ return leaf.fornecedores[b].valor > leaf.fornecedores[a].valor ? b : a; });
+      const topFornPct = (leaf.fornecedores[topForn].valor/leaf.valorTotal)*100;
+      if(topFornPct > 30){
+        insightsRow.appendChild(buildChip('var(--muted)', topForn + ' concentra ' + fmtPct(topFornPct) + ' do valor filtrado'));
+      }
+    }
+  } else {
+    insightsRow.appendChild(buildChip('var(--muted)', 'Sem pedidos no período e filtro selecionados'));
+  }
+
+  /* Origem donut + stats */
+  buildDonut(document.getElementById('origemDonut'), [
+    { value: leaf.valorNacional, color: 'var(--accent)', label: 'Nacional' },
+    { value: leaf.valorImportado, color: 'var(--accent-2)', label: 'Importado' }
+  ], document.getElementById('origemDonutVal'));
+
+  const origemStats = document.getElementById('origemStats');
+  origemStats.innerHTML = '';
+  [
+    { label: 'Nacional', value: leaf.valorNacional, qtd: leaf.qtdNacional, pct: pctNac, color: 'var(--accent)' },
+    { label: 'Importado', value: leaf.valorImportado, qtd: leaf.qtdImportado, pct: pctImp, color: 'var(--accent-2)' }
+  ].forEach(function(d){
+    const item = document.createElement('div'); item.className = 'oi-item';
+    const dot = document.createElement('span'); dot.className = 'oi-dot'; dot.style.background = d.color;
+    const box = document.createElement('div');
+    const lab = document.createElement('div'); lab.className = 'oi-label'; lab.textContent = d.label + ' · ' + fmtPct(d.pct);
+    const val = document.createElement('div'); val.className = 'oi-value'; val.textContent = fmtCompact(d.value);
+    const sub = document.createElement('div'); sub.className = 'oi-sub'; sub.textContent = fmtInt(d.qtd) + ' pedidos';
+    box.appendChild(lab); box.appendChild(val); box.appendChild(sub);
+    item.appendChild(dot); item.appendChild(box);
+    origemStats.appendChild(item);
+  });
+
+  /* Natureza donut + legend */
+  const natColors = { 'Compra': 'var(--accent)', 'Serviço': 'var(--accent-3)', 'Beneficiamento': 'var(--accent-4)' };
+  const natLabels = { 'Compra': 'Compras', 'Serviço': 'Serviços', 'Beneficiamento': 'Beneficiamento' };
+  const natOrder = ['Compra', 'Serviço', 'Beneficiamento'];
+  const natTotal = natOrder.reduce(function(s,k){ return s + ((leaf.natureza[k]||{}).valor||0); }, 0);
+  const natSegs = natOrder.map(function(k){
+    return { value: (leaf.natureza[k]||{}).valor||0, color: natColors[k], label: natLabels[k] };
+  });
+  buildDonut(document.getElementById('naturezaDonut'), natSegs, document.getElementById('naturezaDonutVal'));
+
+  const naturezaLegend = document.getElementById('naturezaLegend');
+  naturezaLegend.innerHTML = '';
+  natOrder.forEach(function(k){
+    const d = leaf.natureza[k] || { valor:0, qtd:0 };
+    const pct = natTotal > 0 ? (d.valor/natTotal)*100 : 0;
+    const li = document.createElement('li');
+    const dot = document.createElement('span'); dot.className = 'dot'; dot.style.background = natColors[k];
+    const name = document.createElement('span'); name.className = 'lg-name'; name.textContent = natLabels[k] + ' (' + fmtInt(d.qtd) + ')';
+    const val = document.createElement('span'); val.className = 'lg-val'; val.textContent = fmtCompact(d.valor);
+    const pctEl = document.createElement('span'); pctEl.className = 'lg-pct'; pctEl.textContent = fmtPct(pct);
+    li.appendChild(dot); li.appendChild(name); li.appendChild(val); li.appendChild(pctEl);
+    naturezaLegend.appendChild(li);
+  });
+
+  /* Trend — valor */
+  const trendPoints = DATA.months.map(function(m){
+    const c = DATA.combos[state.origem][m];
+    return { key: m, value: c.valorTotal, shortLabel: DATA.monthLabels[m] };
+  });
+  buildTrend(document.getElementById('trendChart'), trendPoints, monthIdx, {
+    color: 'var(--accent)',
+    labelFn: function(v){ return fmtCompact(v).replace('R$ ', ''); },
+    tooltipValFn: fmtFull
+  });
+
+  const trendNote = document.getElementById('trendNote');
+  let peakNote = '';
+  DATA.months.forEach(function(m){
+    const c = DATA.combos[state.origem][m];
+    const forns = Object.keys(c.fornecedores).map(function(k){ return { k: k, v: c.fornecedores[k].valor }; });
+    if(forns.length === 0 || c.valorTotal <= 0) return;
+    const top = forns.reduce(function(a,b){ return b.v > a.v ? b : a; });
+    if(top.v / c.valorTotal > 0.45 && c.valorTotal > 1e7){
+      peakNote = 'O pico de ' + DATA.monthLabels[m] + ' reflete majoritariamente pedidos de ' + top.k + ' (' + fmtPct((top.v/c.valorTotal)*100) + ' do valor do mês).';
+    }
+  });
+  trendNote.textContent = peakNote;
+
+  /* Trend — quantidade de pedidos */
+  const trendQtdPoints = DATA.months.map(function(m){
+    const c = DATA.combos[state.origem][m];
+    return { key: m, value: c.qtdPedidos, shortLabel: DATA.monthLabels[m] };
+  });
+  buildTrend(document.getElementById('trendChartQtd'), trendQtdPoints, monthIdx, {
+    color: 'var(--accent-3)',
+    labelFn: function(v){ return fmtInt(v); },
+    tooltipValFn: function(v){ return fmtInt(v) + ' pedidos'; }
+  });
+
+  const trendQtdNote = document.getElementById('trendQtdNote');
+  const qtdVals = trendQtdPoints.map(function(p){ return p.value; });
+  const qtdMax = Math.max.apply(null, qtdVals);
+  const qtdMaxMonth = trendQtdPoints[qtdVals.indexOf(qtdMax)];
+  const qtdAvg = qtdVals.reduce(function(a,b){ return a+b; }, 0) / (qtdVals.length || 1);
+  trendQtdNote.textContent = qtdMax > 0
+    ? qtdMaxMonth.shortLabel + ' teve o maior volume, com ' + fmtInt(qtdMax) + ' pedidos (média do período: ' + fmtInt(Math.round(qtdAvg)) + ').'
+    : '';
+
+  /* Top 10 fornecedores */
+  const fornArr = Object.keys(leaf.fornecedores).map(function(k){
+    return { label: k, value: leaf.fornecedores[k].valor, meta: fmtInt(leaf.fornecedores[k].qtd) + ' pedidos' };
+  }).sort(function(a,b){ return b.value - a.value; }).slice(0, 10);
+  buildHBarList(document.getElementById('fornecedoresChart'), fornArr, {});
+  const top1 = fornArr[0];
+  const top2 = fornArr[1];
+  const fnote = document.getElementById('fornecedoresNote');
+  if(top1 && top2 && top1.value > top2.value * 3){
+    fnote.textContent = top1.label + ' concentra ' + fmtPct((top1.value/(leaf.valorTotal||1))*100) + ' do valor total no período filtrado — confira se não são poucos contratos de grande porte antes de comparar com os demais fornecedores.';
+  } else if(fornArr.length === 0){
+    fnote.textContent = 'Sem pedidos no período e filtro selecionados.';
+  } else {
+    fnote.textContent = '';
+  }
+
+  /* Compradores */
+  const compArr = Object.keys(leaf.compradores).map(function(k){
+    const c = leaf.compradores[k];
+    return { label: c.label || k, value: c.valor, meta: fmtInt(c.qtd) + ' pedidos', color: 'var(--accent-3)' };
+  }).sort(function(a,b){ return b.value - a.value; });
+  buildHBarList(document.getElementById('compradoresChart'), compArr, {});
+
+  /* Entrega (apresentação neutra, sem selo de gravidade) */
+  const am = document.getElementById('atrasoMediana');
+  const amFoot = document.getElementById('atrasoMedianaFoot');
+  am.textContent = (leaf.atrasoMediana > 0 ? '+' : '') + leaf.atrasoMediana.toLocaleString('pt-BR', {maximumFractionDigits:1}) + ' dias';
+  amFoot.textContent = 'mediana do prazo de atraso por item';
+
+  document.getElementById('pctNoPrazo').textContent = fmtPct(leaf.pctNoPrazo);
+  const meter = document.getElementById('meterNoPrazo');
+  meter.style.width = Math.min(100, leaf.pctNoPrazo) + '%';
+  meter.style.background = 'var(--accent)';
+
+  /* Footer */
+  document.getElementById('footerNote').textContent = 'Fonte: KPI_Compras_Hoerbiger.xlsx · base com ' + fmtInt(4350) + ' itens de pedido e ' + fmtInt(1733) + ' pedidos, jan–ago/2026. "Mediana de atraso" é usada no lugar da média por haver valores extremos isolados no campo Atraso. Valores em Reais (R$).';
+}
+
+applyStaticIcons();
+buildPills();
+render();
+
+let resizeTimer = null;
+window.addEventListener('resize', function(){
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(render, 150);
+});
+</script>
+
+</body>
+</html>
